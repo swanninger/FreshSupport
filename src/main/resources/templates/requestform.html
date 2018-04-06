@@ -10,85 +10,96 @@
 <div id="center">
     <h2>Fresh Technology System Access Request Form</h2>
     <form action="" method="post">
-    <div id="userinfo">
-        <h3>User Information</h3>
-        <label>Name of User:
-            <input type="text" name="username">
-        </label>
-        <br>
-        <label>Concept:
-            <input type="text" name="concept">
-        </label>
-        <br>
-        <label>Store Location:
-            <input type="text" name="location">
-        </label>
-        <h3>Requester Information</h3>
-        <label>Requester Name:
-            <input type="text" name="reqname">
-        </label>
-        <br>
-        <label>Requester Email:
-            <input type="text" name="reqemail">
-        </label>
-        <br>
-        <label>Requester Position:
-            <select name="reqposition">
-                <option value="gm">GM</option>
-                <option value="owner">Owner</option>
-                <option value="corporate">Corporate</option>
-            </select>
-        </label>
-    </div>
-    <div>
-        <h3>Request Type</h3>
-        <input type="radio" name="reqtype" value="new" required>New
-        <input type="radio" name="reqtype" value="edit">Edit
-        <input type="radio" name="reqtype" value="remove">Remove
-    </div>
-    <div id="system">
-        <h3>System</h3>
-        <input type="checkbox" name="system[]" value="tools">TOOLS-FRESH TECH DASHBOARD<br>
-        <input type="checkbox" name="system[]" value="sched">FRESH SCHEDULES (Access can only be given once the Employee is entered into the Stores Employee Maintenance)<br>
-        <input type="checkbox" name="system[]" value="email">EMAIL (for REMOVAL complete EMAIL section below)<br>
-        <input type="checkbox" name="system[]" value="cloud">CLOUD DESKTOP (NEW must be requested by Owner/Concept Executive - $50 monthly fee)<br>
-    </div>
-    <div>
-        <h3>Tools Account</h3>
-        <h4>Account Type</h4>
-        <input type="radio" name="tooltype" value="gm">GM
-        <input type="radio" name="tooltype" value="agm">AGM/Shift Leader
-        <input type="radio" name="tooltype" value="owner">Owner
-    </div>
-    <div>
-        <h4>Additional Permissions</h4>
-        <input type="checkbox" name="permissions[]" value="employee records">Add permission to add/edit Employee Records including Pay Rate (default for GM User)<br>
-        <input type="checkbox" name="permissions[]" value="hourly rate audit">Add permission to run Hourly Rate Audit -allows view to pay rates - default for GM User<br>
-        <input type="checkbox" name="permissions[]" value="inventory count sheet">Add permission to edit Inventory Count Sheet item print order - (default for GM User)<br>
-        <input type="checkbox" name="permissions[]" value="flash p&l">Add permission to run Flash P&L (default for GM User)<br>
-        <input type="checkbox" name="permissions[]" value="salary management tool">Add permission to run Salary Management tool (must be requested by Owner/Concept Executive)<br>
-        <input type="checkbox" name="permissions[]" value="foodbev req options">Add permission to request New PLU<br>
-        <input type="checkbox" name="permissions[]" value="remove gm payroll reg">Remove permission for GM User to Run Payroll Register (includes all Salaried Employees)<br>
-    </div>
-    <div>
-        <h4>Sales Reports Email</h4>
-        <input type="checkbox" name="reports[]" value="srep">SALES REPORT (must be requested by Owner/Concept Executive)<br>
-        <input type="checkbox" name="reports[]" value="projected srep">PROJECTED SALES REPORT (must be requested by Owner/Concept Executive<br>
-    </div>
-    <div>
-        <h3>Fresh Schedules Account Type</h3>
-        <input type="radio" name="fstype" value="gm">GM
-        <input type="radio" name="fstype" value="agm">AGM/Shift Leader
-        <input type="radio" name="fstype" value="owner">Owner
-    </div>
-    <div>
-        <h3>Email Removal</h3>
-        <input type="radio" name="removal" value="delete"> Delete
-        <input type="radio" name="removal" value="forward">
-        <label>Forward Email:<input type="text" name="forwardemail"></label>
-    </div>
-    <br><br>
-    <input type="submit">
+        <div id="userinfo">
+            <h3>User Information</h3>
+            <label>Name of User:
+                <input type="text" name="userName">
+            </label>
+            <br>
+            <label>Concept:
+                <input type="text" name="concept">
+            </label>
+            <br>
+            <label>Store Location:
+                <input type="text" name="location">
+            </label>
+            <h3>Requester Information</h3>
+            <label>Requester Name:
+                <input type="text" name="reqName">
+            </label>
+            <br>
+            <label>Requester Email:
+                <input type="text" name="reqEmail">
+            </label>
+            <br>
+            <label>Requester Position:
+                <select name="reqPosition">
+                    <option value="gm">GM</option>
+                    <option value="owner">Owner</option>
+                    <option value="corporate">Corporate</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <h3>Request Type</h3>
+            <input type="radio" name="reqType" value="new" required>New
+            <input type="radio" name="reqType" value="edit">Edit
+            <input type="radio" name="reqType" value="remove">Remove
+        </div>
+        <input type="checkbox" name="cloud">CLOUD DESKTOP (NEW must be requested by Owner/Concept Executive - $50
+        monthly fee)<br>
+        <input type="checkbox" name="email">Create EMAIL<br>
+        <div>
+            <h3>Email Removal</h3>
+            <input type="radio" name="removal" value="delete"> Delete
+            <input type="radio" name="removal" value="forward">
+            <label>Forward Email:<input type="text" name="forwardemail"></label>
+        </div>
+        <div>
+            <h3>Fresh Schedules Account Type</h3>
+            <input type="radio" name="fstype" value="gm">GM
+            <input type="radio" name="fstype" value="agm">AGM/Shift Leader
+            <input type="radio" name="fstype" value="owner">Owner
+        </div>
+        <div>
+            <h3>Tools Account</h3>
+            <div>
+                <h4>Account Type</h4>
+                <input type="radio" name="toolType" value="gm">GM
+                <input type="radio" name="toolType" value="agm">AGM/Shift Leader
+                <input type="radio" name="toolType" value="owner">Owner
+            </div>
+            <div>
+                <h4>Additional Permissions</h4>
+                <input type="checkbox" name="permissions[]" value="employee records">Add permission to add/edit Employee
+                Records including Pay Rate (default for GM User)<br>
+                <input type="checkbox" name="permissions[]" value="hourly rate audit">Add permission to run Hourly Rate
+                Audit -allows view to pay rates - default for GM User<br>
+                <input type="checkbox" name="permissions[]" value="inventory count sheet">Add permission to edit
+                Inventory
+                Count Sheet item print order - (default for GM User)<br>
+                <input type="checkbox" name="permissions[]" value="flash p&l">Add permission to run Flash P&L (default
+                for
+                GM User)<br>
+                <input type="checkbox" name="permissions[]" value="salary management tool">Add permission to run Salary
+                Management tool (must be requested by Owner/Concept Executive)<br>
+                <input type="checkbox" name="permissions[]" value="foodbev req options">Add permission to request New
+                PLU<br>
+                <input type="checkbox" name="permissions[]" value="remove gm payroll reg">Remove permission for GM User
+                to
+                Run Payroll Register (includes all Salaried Employees)<br>
+            </div>
+            <div>
+                <h4>Sales Reports Email</h4>
+                <input type="checkbox" name="reports[]" value="srep">SALES REPORT (must be requested by Owner/Concept
+                Executive)<br>
+                <input type="checkbox" name="reports[]" value="projected srep">PROJECTED SALES REPORT (must be requested
+                by
+                Owner/Concept Executive<br>
+            </div>
+        </div>
+        <br><br>
+        <input type="submit">
     </form>
 </div>
 </body>
