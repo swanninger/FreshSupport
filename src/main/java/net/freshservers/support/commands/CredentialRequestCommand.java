@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class EmailCommand {
+public class CredentialRequestCommand {
 
     private String userName;
     private String concept;
