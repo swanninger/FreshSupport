@@ -3,6 +3,7 @@ package net.freshservers.support.commands;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.freshservers.support.domain.Position;
 
 @Getter
 @Setter
@@ -15,9 +16,10 @@ public class CredentialRequestCommand {
 
     private String reqName;
     private String reqEmail;
-    private String reqPosition;
+    private Position reqPosition;
 
     private String reqType;
+    private Boolean cloud;
 
     private String toolType;
 }

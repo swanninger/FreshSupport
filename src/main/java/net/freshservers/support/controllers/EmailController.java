@@ -1,6 +1,8 @@
 package net.freshservers.support.controllers;
 
 import net.freshservers.support.commands.CredentialRequestCommand;
+import net.freshservers.support.domain.Position;
+import net.freshservers.support.domain.RequestType;
 import net.freshservers.support.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,12 +21,14 @@ public class EmailController {
 
     @RequestMapping("/credentialForm")
     public String getRequestForm(Model model){
-        model.addAttribute("credentialForm", new CredentialRequestCommand());
+        model.addAttribute("credentialRequest", new CredentialRequestCommand());
+        model.addAttribute("allPositions", Position.values());
+        model.addAttribute("requestTypes", RequestType.values());
         return "credentialForm";
     }
 
     @PostMapping("email")
-    public String sendEmail(@ModelAttribute("email") CredentialRequestCommand command){
+    public String sendEmail(@ModelAttribute("credentialForm") CredentialRequestCommand command){
         emailService.sendCredentialRequest(command);
         return "redirect:/thanks";
     }
@@ -37,5 +41,10 @@ public class EmailController {
         emailService.sendCredentialRequest(command);
 
         return "index";
+    }
+
+    @RequestMapping("/thanks")
+    public String thanks(){
+        return "thanks";
     }
 }
