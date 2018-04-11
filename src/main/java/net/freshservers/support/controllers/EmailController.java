@@ -3,6 +3,7 @@ package net.freshservers.support.controllers;
 import net.freshservers.support.commands.CredentialRequestCommand;
 import net.freshservers.support.domain.Position;
 import net.freshservers.support.domain.RequestType;
+import net.freshservers.support.domain.SystemType;
 import net.freshservers.support.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ public class EmailController {
         model.addAttribute("credentialRequest", new CredentialRequestCommand());
         model.addAttribute("allPositions", Position.values());
         model.addAttribute("requestTypes", RequestType.values());
+        model.addAttribute("systemTypes", SystemType.values());
         return "credentialForm";
     }
 
