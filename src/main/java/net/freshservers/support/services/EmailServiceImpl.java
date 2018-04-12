@@ -72,7 +72,8 @@ public class EmailServiceImpl implements EmailService {
         }
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("mark@freshtechnology.com");
+        message.setTo("support@freshtechnology.com");
+        message.setReplyTo(command.getReqEmail());
         message.setSubject("Credential Request Form");
         message.setText(body.toString());
 
