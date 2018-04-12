@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.List;
 
+/* Class responsible for Sending email */
 @Service
 public class EmailServiceImpl implements EmailService {
     private final JavaMailSender emailSender;
@@ -17,6 +18,7 @@ public class EmailServiceImpl implements EmailService {
         this.emailSender = emailSender;
     }
 
+    // Formats Lists from command data insto a single formatted string
     public String collectionFormatter(String title, List<String> c){
         StringBuilder sb = new StringBuilder(title + ":");
         for(String s : c){
@@ -27,6 +29,7 @@ public class EmailServiceImpl implements EmailService {
         return sb.toString();
     }
 
+    //Emails credential requests
     public Boolean sendCredentialRequest(CredentialRequestCommand command) {
         StringBuilder body = new StringBuilder();
         body.append("Name: " + command.getUserName() + "\n");
