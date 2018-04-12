@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:fragment="headfragment">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Fresh Technology</title>
     <link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/css/main.css">
     <script type='text/javascript' src="/webjars/jquery/jquery.min.js"></script>
     <script type='text/javascript' src='/webjars/bootstrap/js/bootstrap.min.js'></script>
 </head>
@@ -28,5 +30,10 @@
         </ul>
     </div>
 </nav>
+<main role="main" class="container" th:fragment="mainfragment(content)">
+    <div class="jumbotron mt-lg-5">
+        <th:block th:replace="${content}"></th:block>
+    </div>
+</main>
 </body>
 </html>

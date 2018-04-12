@@ -3,10 +3,8 @@
 <head th:replace="layout :: headfragment"></head>
 <body>
 <nav th:replace="layout :: navfragment"></nav>
-<main role="main" class="container">
-    <div class="jumbotron mt-lg-5">
+<main role="main" class="container" th:replace="layout :: mainfragment(~{::h1})">
         <h1>Welcome!</h1>
-    </div>
 </main>
 </body>
 </html>

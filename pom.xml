@@ -5,7 +5,6 @@
 
     <groupId>net.freshservers</groupId>
     <artifactId>support</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>support</name>
@@ -92,6 +91,7 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>support</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
