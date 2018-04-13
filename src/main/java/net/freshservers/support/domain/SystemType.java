@@ -6,6 +6,12 @@ public enum SystemType {
 
     @Override
     public String toString() {
-        return super.toString().replaceAll("_", " ");
+        switch(this){
+            case Cloud: return "Cloud/Remote Desktop ($50 A Month)";
+            case Tools: return "FreshTechnology Dashboard/Tools";
+            case Email: return "Email";
+            case Fresh_Schedules: return "FreshSchedules (Employee must be entered into EMP MAINT to get access to FreshSchedules)";
+            default: return super.toString();
+        }
     }
 }

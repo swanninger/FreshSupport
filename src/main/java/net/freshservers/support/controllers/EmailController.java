@@ -23,7 +23,7 @@ public class EmailController {
         this.emailService = emailService;
     }
 
-    @RequestMapping("/credentialForm")
+    @RequestMapping("/credentialform")
     public String getRequestForm(Model model){
         model.addAttribute("credentialRequest", new CredentialRequestCommand());
         model.addAttribute("allPositions", Position.values());

@@ -18,7 +18,7 @@ public class EmailServiceImpl implements EmailService {
         this.emailSender = emailSender;
     }
 
-    // Formats Lists from command data insto a single formatted string
+    // Formats Lists from command data into a single formatted string
     public String collectionFormatter(String title, List<String> c){
         StringBuilder sb = new StringBuilder(title + ":");
         for(String s : c){
@@ -35,19 +35,18 @@ public class EmailServiceImpl implements EmailService {
         body.append("Name: " + command.getUserName() + "\n");
         body.append("Concept: " + command.getConcept() + "\n");
         body.append("Location: " + command.getLocation() + "\n");
-        body.append("User Position: " + command.getUserPosition() + "\n");
+        body.append("User Position: " + command.getUserPosition() + "\n\n");
         body.append("Requester: " + command.getReqName() + "\n");
         body.append("Requester Email: " + command.getReqEmail() + "\n");
-        body.append("Requester Position: " + command.getReqPosition() + "\n");
+        body.append("Requester Position: " + command.getReqPosition() + "\n\n");
         body.append("Type of Request: " + command.getReqType() + "\n");
-
         body.append(collectionFormatter("System Types", command.getSystemTypes()));
 
         if (!command.getForwardEmail().isEmpty()){
             body.append("Forward email to:" + command.getForwardEmail());
         }
 
-        body.append("\nPermissions\n");
+        body.append("\n~Permissions~\n");
 
         if (!command.getEmpMaint().isEmpty()){
             body.append(collectionFormatter("Employee Maintenance", command.getEmpMaint()));
