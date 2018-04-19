@@ -40,5 +40,4 @@ public class CredentialRequestCommand {
     private Boolean payrollData;
 
     private List<String> salesReports;
-
 }

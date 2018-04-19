@@ -23,10 +23,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="/credentialform">Credential Request</a>
             </li>
-            <!--<li class="nav-item">-->
-            <!--<a class="nav-link disabled" href="#">Disabled</a>-->
-            <!--</li>-->
         </ul>
+        <div class="d-inline mt-2 mt-md-0">
+            <form th:action="@{/logout}" method="post">
+                <!--<label th:inline="text">[[${#httpServletRequest.remoteUser}]]</label>-->
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </div>
     </div>
 </nav>
 <main role="main" class="container" th:fragment="mainfragment(content)">
