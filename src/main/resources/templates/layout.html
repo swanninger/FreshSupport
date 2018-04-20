@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags"
+      lang="en">
 <head th:fragment="headfragment">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Fresh Technology</title>
     <link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/main.scss">
 
 </head>
 <body>
@@ -24,10 +26,14 @@
                 <a class="nav-link" href="/credentialform">Credential Request</a>
             </li>
         </ul>
-        <div class="d-inline mt-2 mt-md-0">
-            <form th:action="@{/logout}" method="post">
+        <div class="mt-2 mt-md-0">
+            <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+                <!--<label class="nav-link" th:inline="text">[[${#httpServletRequest.remoteUser}]]</label>-->
+                <input class="btn-secondary border-0 p-2 rounded" role="button" type="submit" value="Sign Out"/>
+            </form>
+            <form th:action="@{/login}" method="post" sec:authorize="!isAuthenticated()">
                 <!--<label th:inline="text">[[${#httpServletRequest.remoteUser}]]</label>-->
-                <input type="submit" value="Sign Out"/>
+                <input class="btn-secondary border-0 p-2 rounded" role="button" type="submit" value="Sign In"/>
             </form>
         </div>
     </div>

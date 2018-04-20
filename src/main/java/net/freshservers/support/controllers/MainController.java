@@ -10,4 +10,9 @@ public class MainController {
     public String getIndex(){
         return "index";
     }
+
+    @RequestMapping("/login")
+    public String getLogin(){
+        return "/login";
+    }
 }

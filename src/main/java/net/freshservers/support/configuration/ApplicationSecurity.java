@@ -9,7 +9,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
+@SuppressWarnings("deprecation")
 @Configuration
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     private final UserDetailsServiceImpl userDetailsService;
@@ -26,11 +28,9 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/webjars/**","/images/*").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/","index").permitAll()
+                .antMatchers("/css/**","/webjars/**","/images/*","/","/index").permitAll()
                 .anyRequest().fullyAuthenticated()
-                .and().formLogin().permitAll()
+                .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().permitAll();
     }
     @Bean
@@ -42,10 +42,12 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
         return authProvider;
     }
 
-
-    @SuppressWarnings("deprecation")
     @Bean
     public PasswordEncoder encoder() {
         return NoOpPasswordEncoder.getInstance();
+    }
+    @Bean
+    public SpringSecurityDialect springSecurityDialect(){
+        return new SpringSecurityDialect();
     }
 }
