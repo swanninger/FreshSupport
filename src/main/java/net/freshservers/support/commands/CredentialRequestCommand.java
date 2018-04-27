@@ -22,7 +22,7 @@ public class CredentialRequestCommand {
 
     private String reqName;
     private String reqEmail;
-    private Position reqPosition;
+    private String reqPosition;
 
     private String reqType;
 

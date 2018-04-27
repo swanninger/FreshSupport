@@ -19,6 +19,10 @@ public class User {
     @Column(name = "PW")
     private String password;
 
+    private String fname;
+    private String lname;
+    private String email;
+
     private String concept;
 
     private String typeUser;

@@ -70,7 +70,7 @@ public class EmailServiceImpl implements EmailService {
             body.append("Flash: Can Run Flash\n");
         }
         if (!command.getSalesReports().isEmpty()){
-            body.append(collectionFormatter("Sales Reports", command.getSalesReports()));
+            body.append(collectionFormatter("Sales Reports: ", command.getSalesReports()));
         }
 
         SimpleMailMessage message = new SimpleMailMessage();
