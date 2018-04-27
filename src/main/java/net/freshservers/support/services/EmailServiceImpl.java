@@ -75,6 +75,9 @@ public class EmailServiceImpl implements EmailService {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo("support@freshtechnology.com");
+        if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){
+            message.setCc("angela@freshtechnology.com");
+        }
         message.setReplyTo(command.getReqEmail());
         message.setSubject("Credential Request Form");
         message.setText(body.toString());

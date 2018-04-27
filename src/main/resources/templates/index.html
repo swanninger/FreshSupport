@@ -4,7 +4,7 @@
 <body>
 <nav th:replace="layout :: navfragment"></nav>
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::h1})">
-        <h1 th:inline="text">Welcome[[${#httpServletRequest.remoteUser}]]!</h1>
+        <h1 th:inline="text">Welcome!</h1>
 </main>
 <div th:replace="layout :: scripts"></div>
 </body>
