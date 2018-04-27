@@ -58,12 +58,16 @@ public class UserDetailsImpl implements UserDetails {
         return user.getFname();
     }
 
+    public String getLastName(){
+        return user.getLname();
+    }
+
     public String getEmail(){
         return user.getEmail();
     }
 
-    public String getLastName(){
-        return user.getLname();
+    public String getConcept(){
+        return user.getConcept();
     }
 
     public String getTypeUser(){

@@ -38,7 +38,8 @@ public class EmailServiceImpl implements EmailService {
         body.append("User Position: " + command.getUserPosition() + "\n\n");
         body.append("Requester: " + command.getReqName() + "\n");
         body.append("Requester Email: " + command.getReqEmail() + "\n");
-        body.append("Requester Position: " + command.getReqPosition() + "\n\n");
+        body.append("Requester Position: " + command.getReqPosition() + "\n");
+        body.append("Requester Concept: " + command.getConcept() + "\n\n");
         body.append("Type of Request: " + command.getReqType() + "\n");
         body.append(collectionFormatter("System Types", command.getSystemTypes()));
 
@@ -72,6 +73,10 @@ public class EmailServiceImpl implements EmailService {
         if (!command.getSalesReports().isEmpty()){
             body.append(collectionFormatter("Sales Reports: ", command.getSalesReports()));
         }
+        if (!command.getNotes().isEmpty()){
+            body.append("\nNotes: " + command.getNotes());
+        }
+
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo("support@freshtechnology.com");
@@ -79,7 +84,7 @@ public class EmailServiceImpl implements EmailService {
             message.setCc("angela@freshtechnology.com");
         }
         message.setReplyTo(command.getReqEmail());
-        message.setSubject("Credential Request Form");
+        message.setSubject("Credential Request - " + command.getUserName());
         message.setText(body.toString());
 
         emailSender.send(message);

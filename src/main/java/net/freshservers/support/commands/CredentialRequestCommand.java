@@ -23,6 +23,7 @@ public class CredentialRequestCommand {
     private String reqName;
     private String reqEmail;
     private String reqPosition;
+    private String reqConcept;
 
     private String reqType;
 
@@ -40,4 +41,6 @@ public class CredentialRequestCommand {
     private Boolean payrollData;
 
     private List<String> salesReports;
+
+    private String notes;
 }
