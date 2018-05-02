@@ -1,12 +1,9 @@
 package net.freshservers.support.services;
 
 import net.freshservers.support.commands.CredentialRequestCommand;
-import net.freshservers.support.domain.SystemType;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
-import java.util.Collection;
 import java.util.List;
 
 /* Class responsible for Sending email */
@@ -19,10 +16,10 @@ public class EmailServiceImpl implements EmailService {
     }
 
     // Formats Lists from command data into a single formatted string
-    public String collectionFormatter(String title, List<String> c){
+    private String collectionFormatter(String title, List<String> c){
         StringBuilder sb = new StringBuilder(title + ":");
         for(String s : c){
-            sb.append(" " + s + ",");
+            sb.append(" ").append(s).append(",");
         }
         sb.deleteCharAt(sb.length() - 1);
         sb.append("\n");
@@ -32,19 +29,19 @@ public class EmailServiceImpl implements EmailService {
     //Emails credential requests
     public Boolean sendCredentialRequest(CredentialRequestCommand command) {
         StringBuilder body = new StringBuilder();
-        body.append("Name: " + command.getUserName() + "\n");
-        body.append("Concept: " + command.getConcept() + "\n");
-        body.append("Location: " + command.getLocation() + "\n");
-        body.append("User Position: " + command.getUserPosition() + "\n\n");
-        body.append("Requester: " + command.getReqName() + "\n");
-        body.append("Requester Email: " + command.getReqEmail() + "\n");
-        body.append("Requester Position: " + command.getReqPosition() + "\n");
-        body.append("Requester Concept: " + command.getConcept() + "\n\n");
-        body.append("Type of Request: " + command.getReqType() + "\n");
+        body.append("Name: ").append(command.getUserName()).append("\n");
+        body.append("Concept: ").append(command.getConcept()).append("\n");
+        body.append("Location: ").append(command.getLocation()).append("\n");
+        body.append("User Position: ").append(command.getUserPosition()).append("\n\n");
+        body.append("Requester: ").append(command.getReqName()).append("\n");
+        body.append("Requester Email: ").append(command.getReqEmail()).append("\n");
+        body.append("Requester Position: ").append(command.getReqPosition()).append("\n");
+        body.append("Requester Concept: ").append(command.getConcept()).append("\n\n");
+        body.append("Type of Request: ").append(command.getReqType()).append("\n");
         body.append(collectionFormatter("System Types", command.getSystemTypes()));
 
         if (!command.getForwardEmail().isEmpty()){
-            body.append("Forward email to:" + command.getForwardEmail());
+            body.append("Forward email to:").append(command.getForwardEmail());
         }
 
         body.append("\n~Permissions~\n");
@@ -74,10 +71,10 @@ public class EmailServiceImpl implements EmailService {
             body.append(collectionFormatter("Sales Reports: ", command.getSalesReports()));
         }
         if (!command.getNotes().isEmpty()){
-            body.append("\nNotes: " + command.getNotes());
+            body.append("\nNotes: ").append(command.getNotes());
         }
 
-
+        // email metadata
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo("support@freshtechnology.com");
         if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){
