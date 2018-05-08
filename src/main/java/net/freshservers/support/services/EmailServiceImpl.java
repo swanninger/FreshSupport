@@ -15,6 +15,61 @@ public class EmailServiceImpl implements EmailService {
         this.emailSender = emailSender;
     }
 
+    /**
+     *
+     * @param command command object from form
+     * @return message body
+     */
+    private String createMessageBody(CredentialRequestCommand command) {
+        StringBuilder messageBody = new StringBuilder();
+        messageBody.append("Name: ").append(command.getUserName()).append("\n");
+        messageBody.append("Concept: ").append(command.getConcept()).append("\n");
+        messageBody.append("Location: ").append(command.getLocation()).append("\n");
+        messageBody.append("User Position: ").append(command.getUserPosition()).append("\n\n");
+        messageBody.append("Requester: ").append(command.getReqName()).append("\n");
+        messageBody.append("Requester Email: ").append(command.getReqEmail()).append("\n");
+        messageBody.append("Requester Position: ").append(command.getReqPosition()).append("\n");
+        messageBody.append("Requester Concept: ").append(command.getConcept()).append("\n\n");
+        messageBody.append("Type of Request: ").append(command.getReqType()).append("\n");
+        messageBody.append(collectionFormatter("System Types", command.getSystemTypes()));
+
+        if (!command.getForwardEmail().isEmpty()){
+            messageBody.append("Forward email to:").append(command.getForwardEmail());
+        }
+
+        messageBody.append("\n~Permissions~\n");
+
+        if (!command.getEmpMaint().isEmpty()){
+            messageBody.append(collectionFormatter("Employee Maintenance", command.getEmpMaint()));
+        }
+        if (!command.getHourlyRateAudit().isEmpty()){
+            messageBody.append(collectionFormatter("Hourly Rate Audit", command.getHourlyRateAudit()));
+        }
+        if (command.getSalaryMgmt()){
+            messageBody.append("Salary Mgmt: Run Salary Mgmt Tool\n");
+        }
+        if (command.getPayrollData()){
+            messageBody.append("Payroll Data: All 3\n");
+        }
+        if (command.getFoodBevReq()){
+            messageBody.append("Food and Bev Request: Access Options\n");
+        }
+        if (command.getInvCounts()){
+            messageBody.append("Inventory Counts: View and Update Organization\n");
+        }
+        if (command.getFlash()){
+            messageBody.append("Flash: Can Run Flash\n");
+        }
+        if (!command.getSalesReports().isEmpty()){
+            messageBody.append(collectionFormatter("Sales Reports: ", command.getSalesReports()));
+        }
+        if (!command.getNotes().isEmpty()){
+            messageBody.append("\nNotes: ").append(command.getNotes());
+        }
+
+        return messageBody.toString();
+    }
+
     // Formats Lists from command data into a single formatted string
     private String collectionFormatter(String title, List<String> c){
         StringBuilder sb = new StringBuilder(title + ":");
@@ -26,54 +81,7 @@ public class EmailServiceImpl implements EmailService {
         return sb.toString();
     }
 
-    //Emails credential requests
-    public Boolean sendCredentialRequest(CredentialRequestCommand command) {
-        StringBuilder body = new StringBuilder();
-        body.append("Name: ").append(command.getUserName()).append("\n");
-        body.append("Concept: ").append(command.getConcept()).append("\n");
-        body.append("Location: ").append(command.getLocation()).append("\n");
-        body.append("User Position: ").append(command.getUserPosition()).append("\n\n");
-        body.append("Requester: ").append(command.getReqName()).append("\n");
-        body.append("Requester Email: ").append(command.getReqEmail()).append("\n");
-        body.append("Requester Position: ").append(command.getReqPosition()).append("\n");
-        body.append("Requester Concept: ").append(command.getConcept()).append("\n\n");
-        body.append("Type of Request: ").append(command.getReqType()).append("\n");
-        body.append(collectionFormatter("System Types", command.getSystemTypes()));
-
-        if (!command.getForwardEmail().isEmpty()){
-            body.append("Forward email to:").append(command.getForwardEmail());
-        }
-
-        body.append("\n~Permissions~\n");
-
-        if (!command.getEmpMaint().isEmpty()){
-            body.append(collectionFormatter("Employee Maintenance", command.getEmpMaint()));
-        }
-        if (!command.getHourlyRateAudit().isEmpty()){
-            body.append(collectionFormatter("Hourly Rate Audit", command.getHourlyRateAudit()));
-        }
-        if (command.getSalaryMgmt()){
-            body.append("Salary Mgmt: Run Salary Mgmt Tool\n");
-        }
-        if (command.getPayrollData()){
-            body.append("Payroll Data: All 3\n");
-        }
-        if (command.getFoodBevReq()){
-            body.append("Food and Bev Request: Access Options\n");
-        }
-        if (command.getInvCounts()){
-            body.append("Inventory Counts: View and Update Organization\n");
-        }
-        if (command.getFlash()){
-            body.append("Flash: Can Run Flash\n");
-        }
-        if (!command.getSalesReports().isEmpty()){
-            body.append(collectionFormatter("Sales Reports: ", command.getSalesReports()));
-        }
-        if (!command.getNotes().isEmpty()){
-            body.append("\nNotes: ").append(command.getNotes());
-        }
-
+    public void sendEmail(CredentialRequestCommand command){
         // email metadata
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo("support@freshtechnology.com");
@@ -82,9 +90,18 @@ public class EmailServiceImpl implements EmailService {
         }
         message.setReplyTo(command.getReqEmail());
         message.setSubject("Credential Request - " + command.getUserName());
-        message.setText(body.toString());
+        message.setText(createMessageBody(command));
 
         emailSender.send(message);
-        return true;
     }
+
+    @Override
+    public void sendZenTicket(CredentialRequestCommand command) {
+        String messageBody = createMessageBody(command);
+
+
+
+
+    }
+
 }

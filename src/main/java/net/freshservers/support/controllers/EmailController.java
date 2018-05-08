@@ -51,7 +51,7 @@ public class EmailController {
             command.setReqEmail(user.getEmail());
         }
         command.setConcept(user.getConcept());
-        emailService.sendCredentialRequest(command);
+        emailService.sendEmail(command);
         return "redirect:/thanks";
     }
 

@@ -4,5 +4,7 @@ import net.freshservers.support.commands.CredentialRequestCommand;
 
 public interface EmailService {
 
-    Boolean sendCredentialRequest(CredentialRequestCommand command);
+    void sendEmail(CredentialRequestCommand command);
+
+    void sendZenTicket(CredentialRequestCommand command);
 }
