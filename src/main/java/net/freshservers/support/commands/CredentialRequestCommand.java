@@ -6,6 +6,7 @@ import lombok.Setter;
 import net.freshservers.support.domain.Position;
 import net.freshservers.support.domain.SystemType;
 
+import java.util.LinkedList;
 import java.util.List;
 
 // Takes Credential Form Data
@@ -34,13 +35,13 @@ public class CredentialRequestCommand {
 //  Tools Permissions
     private List<String> empMaint;
     private List<String> hourlyRateAudit;
-    private Boolean invCounts;
-    private Boolean flash;
-    private Boolean salaryMgmt;
-    private Boolean foodBevReq;
-    private Boolean payrollData;
+    private boolean invCounts;
+    private boolean flash;
+    private boolean salaryMgmt;
+    private boolean foodBevReq;
+    private boolean payrollData;
 
-    private List<String> salesReports;
+    private List<String> salesReports = new LinkedList<>();
 
     private String notes;
 }

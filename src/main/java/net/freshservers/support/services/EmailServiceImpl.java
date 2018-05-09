@@ -45,19 +45,19 @@ public class EmailServiceImpl implements EmailService {
         if (!command.getHourlyRateAudit().isEmpty()){
             messageBody.append(collectionFormatter("Hourly Rate Audit", command.getHourlyRateAudit()));
         }
-        if (command.getSalaryMgmt()){
+        if (command.isSalaryMgmt()){
             messageBody.append("Salary Mgmt: Run Salary Mgmt Tool\n");
         }
-        if (command.getPayrollData()){
+        if (command.isPayrollData()){
             messageBody.append("Payroll Data: All 3\n");
         }
-        if (command.getFoodBevReq()){
+        if (command.isFoodBevReq()){
             messageBody.append("Food and Bev Request: Access Options\n");
         }
-        if (command.getInvCounts()){
+        if (command.isInvCounts()){
             messageBody.append("Inventory Counts: View and Update Organization\n");
         }
-        if (command.getFlash()){
+        if (command.isFlash()){
             messageBody.append("Flash: Can Run Flash\n");
         }
         if (!command.getSalesReports().isEmpty()){
