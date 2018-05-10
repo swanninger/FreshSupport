@@ -28,13 +28,13 @@ public class CredentialRequestCommand {
 
     private String reqType;
 
-    private List<String> systemTypes;
+    private List<String> systemTypes = new LinkedList<>();
 
     private String forwardEmail;
 
 //  Tools Permissions
-    private List<String> empMaint;
-    private List<String> hourlyRateAudit;
+    private List<String> empMaint = new LinkedList<>();
+    private List<String> hourlyRateAudit = new LinkedList<>();
     private boolean invCounts;
     private boolean flash;
     private boolean salaryMgmt;

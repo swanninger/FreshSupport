@@ -10,6 +10,6 @@ public class RestTemplateConfig {
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder){
-        return builder.build();
+        return builder.basicAuthorization("scott@freshtechnology.com/token","3eHFJWzNrxknNRiDiEaMI23nR4DZ1zvhS20AboIa").build();
     }
 }
