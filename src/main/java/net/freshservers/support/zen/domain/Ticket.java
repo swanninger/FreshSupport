@@ -1,14 +1,16 @@
 package net.freshservers.support.zen.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
-import javax.persistence.Entity;
 import java.util.Date;
+import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Data
 public class Ticket {
 
-    private Integer id;
+    private int id;
     private String url;
     private String type;
     private String subject;
@@ -17,9 +19,21 @@ public class Ticket {
     private String priority;
     private String status;
     private String recipient;
-    private Integer group_id;
-    private Integer[] collaborator_ids;
-    private String[] collaborators;
+    private long group_id;
+    private List<Integer> collaborator_ids;
+    private List<Collaborators> collaborators;
     private Date created_at;
     private Date updated_at;
+    private Requester requester;
+    private List<TicketField> custom_fields;
+
+    public Ticket(String subject, Comment comment){
+
+    }
+
+    public Ticket(String subject, Comment comment, Long group_id) {
+        this.subject = subject;
+        this.comment = comment;
+        this.group_id = group_id;
+    }
 }

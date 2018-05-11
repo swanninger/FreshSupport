@@ -1,18 +1,27 @@
 package net.freshservers.support.services;
 
 import net.freshservers.support.commands.CredentialRequestCommand;
+import net.freshservers.support.zen.domain.Comment;
+import net.freshservers.support.zen.domain.Requester;
+import net.freshservers.support.zen.domain.Ticket;
+import net.freshservers.support.zen.domain.TicketField;
+import net.freshservers.support.zen.services.ZenApiService;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import java.util.LinkedList;
 import java.util.List;
 
 /* Class responsible for Sending email */
 @Service
 public class EmailServiceImpl implements EmailService {
     private final JavaMailSender emailSender;
+    private final ZenApiService zenApiService;
 
-    public EmailServiceImpl(JavaMailSender emailSender) {
+    public EmailServiceImpl(JavaMailSender emailSender, ZenApiService zenApiService) {
         this.emailSender = emailSender;
+        this.zenApiService = zenApiService;
     }
 
     /**
@@ -27,7 +36,11 @@ public class EmailServiceImpl implements EmailService {
         messageBody.append("Location: ").append(command.getLocation()).append("\n");
         messageBody.append("User Position: ").append(command.getUserPosition()).append("\n\n");
         messageBody.append("Requester: ").append(command.getReqName()).append("\n");
-        messageBody.append("Requester Email: ").append(command.getReqEmail()).append("\n");
+        if (command.getReqEmail() != null){
+            messageBody.append("Requester Email: ").append(command.getReqEmail()).append("\n");
+        }else {
+            messageBody.append("Requester Email: blank");
+        }
         messageBody.append("Requester Position: ").append(command.getReqPosition()).append("\n");
         messageBody.append("Requester Concept: ").append(command.getConcept()).append("\n\n");
         messageBody.append("Type of Request: ").append(command.getReqType()).append("\n");
@@ -94,14 +107,24 @@ public class EmailServiceImpl implements EmailService {
 
         emailSender.send(message);
     }
-
+//25140303
     @Override
-    public void sendZenTicket(CredentialRequestCommand command) {
+    public void sendCredentialsTicket(CredentialRequestCommand command) {
         String messageBody = createMessageBody(command);
 
+        Ticket ticket = new Ticket("Credential Request - " + command.getUserName(), new Comment(messageBody), 360000932611L);
+        ticket.setRequester(new Requester(command.getReqName(),command.getReqEmail()));
 
+        List<TicketField> fields = new LinkedList<>();
+        fields.add(new TicketField(25140303,command.getConcept().toLowerCase()));
+        ticket.setCustom_fields(fields);
 
-
+        if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){
+            List<Integer> collaborators = new LinkedList<>();
+            collaborators.add(1783869483);
+            ticket.setCollaborator_ids(collaborators);
+        }
+        zenApiService.sendTicket(ticket,"tickets.json");
     }
 
 }

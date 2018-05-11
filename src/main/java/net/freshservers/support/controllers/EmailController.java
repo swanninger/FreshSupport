@@ -47,11 +47,11 @@ public class EmailController {
 
         command.setReqName(user.getFirstName() + " " + user.getLastName());
         command.setReqPosition(user.getTypeUser());
-        if (command.getReqEmail().isEmpty()){
-            command.setReqEmail(user.getEmail());
-        }
+//        if (command.getReqEmail().isEmpty()){
+//            command.setReqEmail(user.getEmail());
+//        }
         command.setConcept(user.getConcept());
-        emailService.sendEmail(command);
+        emailService.sendCredentialsTicket(command);
         return "redirect:/thanks";
     }
 

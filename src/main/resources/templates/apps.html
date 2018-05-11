@@ -13,7 +13,9 @@
                    th:text="${ipad.substring(0,ipad.length()-4)}"></a>
             </div>
             <h3>Android</h3>
-            <div class="d-flex align-content-start flex-wrap">
+            <div  class="d-flex align-content-start flex-wrap">
+                <a class="m-1 btn-info px-3 py-md-4 rounded" role="button" href="HTTP://freshservers.net:8080/aloha.apk">Aloha KDS</a>
+                <a class="m-1 btn-info px-3 py-md-4 rounded" role="button" href="http://freshservers.net:8080/square.apk">Square KDS</a>
                 <a th:each="android : ${androidApps}" class="m-1 btn-info px-3 py-md-4 rounded" role="button"
                    th:href="'/apps/android/' + ${android}"
                    th:text="${android.substring(0,android.length() - 4)}"></a>

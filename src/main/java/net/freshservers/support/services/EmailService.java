@@ -6,5 +6,5 @@ public interface EmailService {
 
     void sendEmail(CredentialRequestCommand command);
 
-    void sendZenTicket(CredentialRequestCommand command);
+    void sendCredentialsTicket(CredentialRequestCommand command);
 }

@@ -1,13 +1,18 @@
 package net.freshservers.support.zen.services;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import lombok.extern.slf4j.Slf4j;
 import net.freshservers.support.zen.configuration.ZenApiConfiguration;
 import net.freshservers.support.zen.domain.Ticket;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
+@Slf4j
 public class ZenApiServiceImpl implements ZenApiService {
     private ZenApiConfiguration zenApiConfiguration;
     private RestTemplate restTemplate;
@@ -23,7 +28,15 @@ public class ZenApiServiceImpl implements ZenApiService {
     }
 
     @Override
-    public Ticket createTicket() {
-        return null;
+    public void sendTicket(Ticket ticket, String url) {
+        url = zenApiConfiguration.getBaseUrl() + url;
+
+        Map<String, Object> postMap = new HashMap<>();
+        postMap.put("ticket", ticket);
+
+
+
+        JsonNode t = restTemplate.postForObject(url, postMap, JsonNode.class);
+        log.info(t.toString());
     }
 }

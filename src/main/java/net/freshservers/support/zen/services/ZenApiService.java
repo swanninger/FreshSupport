@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ZenApiService {
     List<Ticket> getTickets();
-    Ticket createTicket();
+    void sendTicket(Ticket ticket, String url);
 }
