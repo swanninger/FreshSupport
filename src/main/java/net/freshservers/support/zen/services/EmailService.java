@@ -1,4 +1,4 @@
-package net.freshservers.support.services;
+package net.freshservers.support.zen.services;
 
 import net.freshservers.support.commands.CredentialRequestCommand;
 

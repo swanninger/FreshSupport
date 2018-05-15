@@ -1,15 +1,17 @@
-package net.freshservers.support.services;
+package net.freshservers.support.zen.services;
 
 import net.freshservers.support.commands.CredentialRequestCommand;
 import net.freshservers.support.zen.domain.Comment;
 import net.freshservers.support.zen.domain.Requester;
 import net.freshservers.support.zen.domain.Ticket;
 import net.freshservers.support.zen.domain.TicketField;
+import net.freshservers.support.zen.services.EmailService;
 import net.freshservers.support.zen.services.ZenApiService;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -107,7 +109,7 @@ public class EmailServiceImpl implements EmailService {
 
         emailSender.send(message);
     }
-//25140303
+
     @Override
     public void sendCredentialsTicket(CredentialRequestCommand command) {
         String messageBody = createMessageBody(command);
@@ -115,7 +117,7 @@ public class EmailServiceImpl implements EmailService {
         Ticket ticket = new Ticket("Credential Request - " + command.getUserName(), new Comment(messageBody), 360000932611L);
         ticket.setRequester(new Requester(command.getReqName(),command.getReqEmail()));
 
-        List<TicketField> fields = new LinkedList<>();
+        List<TicketField> fields = new ArrayList<>();
         fields.add(new TicketField(25140303,command.getConcept().toLowerCase()));
         ticket.setCustom_fields(fields);
 
@@ -124,7 +126,7 @@ public class EmailServiceImpl implements EmailService {
             collaborators.add(1783869483);
             ticket.setCollaborator_ids(collaborators);
         }
-        zenApiService.sendTicket(ticket,"tickets.json");
+        zenApiService.sendTicket(ticket);
     }
 
 }

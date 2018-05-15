@@ -1,5 +1,6 @@
 package net.freshservers.support.controllers;
 
+import net.freshservers.support.domain.RConcepts;
 import net.freshservers.support.services.AppService;
 import net.freshservers.support.services.WallpaperService;
 import org.springframework.stereotype.Controller;
@@ -30,4 +31,9 @@ public class ResourcesController {
         return "apps";
     }
 
+    @RequestMapping("/recipelinks")
+    public String getRecipes(Model model){
+        model.addAttribute("concepts", RConcepts.values());
+        return "recipelinks";
+    }
 }

@@ -28,8 +28,8 @@ public class ZenApiServiceImpl implements ZenApiService {
     }
 
     @Override
-    public void sendTicket(Ticket ticket, String url) {
-        url = zenApiConfiguration.getBaseUrl() + url;
+    public void sendTicket(Ticket ticket) {
+        String url = zenApiConfiguration.getBaseUrl() + "tickets.json";
 
         Map<String, Object> postMap = new HashMap<>();
         postMap.put("ticket", ticket);

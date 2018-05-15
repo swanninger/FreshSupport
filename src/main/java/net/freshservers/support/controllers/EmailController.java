@@ -4,8 +4,7 @@ import net.freshservers.support.commands.CredentialRequestCommand;
 import net.freshservers.support.domain.Position;
 import net.freshservers.support.domain.RequestType;
 import net.freshservers.support.domain.SystemType;
-import net.freshservers.support.domain.User;
-import net.freshservers.support.services.EmailService;
+import net.freshservers.support.zen.services.EmailService;
 import net.freshservers.support.services.UserDetailsImpl;
 import net.freshservers.support.services.UserServiceImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,9 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.security.Principal;
-import java.util.Optional;
 
 // Class for controlling Credential Form pages
 @Controller
@@ -39,6 +35,17 @@ public class EmailController {
         model.addAttribute("requestTypes", RequestType.values());
         model.addAttribute("systemTypes", SystemType.values());
         return "credentialForm";
+    }
+
+    @RequestMapping("/formTest")
+    public String getTestForm(Model model){
+        UserDetailsImpl userDetail = (UserDetailsImpl)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute(userDetail);
+        model.addAttribute("credentialRequest", new CredentialRequestCommand());
+        model.addAttribute("allPositions", Position.values());
+        model.addAttribute("requestTypes", RequestType.values());
+        model.addAttribute("systemTypes", SystemType.values());
+        return "formTest";
     }
 
     @PostMapping("/email")
