@@ -15,16 +15,21 @@
                 </label>
                 <br>
                 <label>Concept:
-                    <label th:for="${#ids.next('concept')}">User Position</label>
+                    <label th:for="${#ids.next('concept')}"></label>
                     <select th:field="*{concept}">
-                        <option th:each="con : ${userDetailsImpl}"
+                        <option th:each="con : ${concepts}"
                                 th:value="${con}"
                                 th:text="${con}"></option>
                     </select>
                 </label>
                 <br>
                 <label>Store Location(s):
-                    <input type="text" size="50" th:field="*{location}" required>
+                    <label th:for="${#ids.next('location')}"></label>
+                    <select th:field="*{location}">
+                        <option th:each="store : ${stores}"
+                                th:value="${store}"
+                                th:text="${store}"></option>
+                    </select>
                 </label>
                 <div>
                     <label th:for="${#ids.next('userPosition')}">User Position</label>

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeSet;
 
 @Slf4j
 @Service
@@ -26,7 +27,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Set<Store> getStores(User user) {
-        return user.getStores();
+    public Set<String> getStoresNames(User user) {
+        Set<String> stores = new TreeSet<>();
+        for(Store s:user.getStores()){
+            stores.add(s.getName());
+        }
+        return stores;
+    }
+
+    @Override
+    public Set<String> getAllConceptCodes(User user){
+        Set<String> concepts = new TreeSet<>();
+        for (Store s: user.getStores()) {
+            concepts.add(s.getConcept().getName());
+        }
+        return concepts;
     }
 }

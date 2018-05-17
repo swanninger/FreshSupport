@@ -1,5 +1,6 @@
 package net.freshservers.support.services;
 
+import lombok.Getter;
 import net.freshservers.support.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDetailsImpl implements UserDetails {
-
+    @Getter
     private User user;
 
     public UserDetailsImpl(User user) {
