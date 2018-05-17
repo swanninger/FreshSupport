@@ -34,7 +34,7 @@ public class EmailController {
         model.addAttribute("allPositions", Position.values());
         model.addAttribute("requestTypes", RequestType.values());
         model.addAttribute("systemTypes", SystemType.values());
-        return "credentialForm";
+        return "zen/credentialForm";
     }
 
     @RequestMapping("/formTest")
@@ -45,7 +45,7 @@ public class EmailController {
         model.addAttribute("allPositions", Position.values());
         model.addAttribute("requestTypes", RequestType.values());
         model.addAttribute("systemTypes", SystemType.values());
-        return "formTest";
+        return "zen/formTest";
     }
 
     @PostMapping("/email")
@@ -64,6 +64,6 @@ public class EmailController {
 
     @RequestMapping("/thanks")
     public String thanks(){
-        return "thanks";
+        return "zen/thanks";
     }
 }

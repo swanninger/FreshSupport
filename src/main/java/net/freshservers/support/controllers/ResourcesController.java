@@ -22,18 +22,18 @@ public class ResourcesController {
     public String getWallpapers(Model model){
         model.addAttribute("ipadWallpapers", wallpaperService.getIpadWallpapers());
         model.addAttribute("androidWallpapers", wallpaperService.getAndroidWallpapers());
-        return "wallpaper";
+        return "resources/wallpaper";
     }
     @RequestMapping("/apps")
     public String getApps(Model model){
         model.addAttribute("ipadApps", appService.getIpadApps());
         model.addAttribute("androidApps", appService.getAndroidApps());
-        return "apps";
+        return "resources/apps";
     }
 
     @RequestMapping("/recipelinks")
     public String getRecipes(Model model){
         model.addAttribute("concepts", RConcepts.values());
-        return "recipelinks";
+        return "resources/recipelinks";
     }
 }

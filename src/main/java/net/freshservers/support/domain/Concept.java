@@ -1,12 +1,16 @@
 package net.freshservers.support.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude = {"stores"})
+@ToString(exclude = {"stores"})
 @Table(name = "CONCEPTS")
 public class Concept {
 
@@ -15,7 +19,8 @@ public class Concept {
     @Column(name = "RECID")
     private Long id;
 
-    private String concept;
+    @Column(name = "concept")
+    private String name;
 
     private String conceptName;
 

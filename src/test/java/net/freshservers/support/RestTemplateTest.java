@@ -22,7 +22,7 @@ public class RestTemplateTest {
 
     private final String apiUrl = "https://bgcpos.zendesk.com/api/v2/tickets.json";
 
-    @Test
+//    @Test
     public void postTicket(){
 //        RestTemplate restTemplate = new RestTemplateBuilder()
 //                .basicAuthorization("scott@freshtechnology.com/token","3eHFJWzNrxknNRiDiEaMI23nR4DZ1zvhS20AboIa")
@@ -40,7 +40,7 @@ public class RestTemplateTest {
 //        log.info(jsonNode.toString());
     }
 
-    @Test
+//    @Test
     public void postTicket2(){
 //        RestTemplate restTemplate = new RestTemplateBuilder()
 //                .basicAuthorization("scott@freshtechnology.com/token","3eHFJWzNrxknNRiDiEaMI23nR4DZ1zvhS20AboIa")

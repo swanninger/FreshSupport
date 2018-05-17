@@ -1,12 +1,15 @@
 package net.freshservers.support.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = {"stores"})
 @Table(name = "USERS")
 public class User {
 
@@ -31,11 +34,11 @@ public class User {
 
     private Boolean activeflg;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "USERACCTBL",
             joinColumns = @JoinColumn(name = "USEID", referencedColumnName = "RECID"),
             inverseJoinColumns = @JoinColumn(name = "DBA_ID", referencedColumnName = "RECID")
     )
-    private Set<Store> stores;
+    private Set<Store> stores = new TreeSet<>();
 }

@@ -1,4 +1,4 @@
-package net.freshservers.support;
+package net.freshservers.support.services;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Slf4j
-public class WallpaperTest {
+public class FileScanningTest {
 
     private Set<String> wallpapers = new HashSet<>();
     private final File dir = new File("images/wallpaper");
@@ -36,7 +36,7 @@ public class WallpaperTest {
         }
     }
 
-    @Test
+//    @Test
     public void test(){
         scanFolder();
         for (String s:wallpapers){
@@ -44,7 +44,7 @@ public class WallpaperTest {
         }
     }
 
-    @Test
+//    @Test
     public void testStringSplitter(){
 
     }
