@@ -11,8 +11,12 @@
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<nav th:fragment="navfragment" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="col-sm-2"><a class="navbar-brand" href="/"><img style="width: 100% \9;" class="img-fluid" alt="Responsive image" src="/images/FTPHB.png" /></a></div>
+<nav id="nav" th:fragment="navfragment" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="col-sm-2">
+        <a class="navbar-brand" href="/">
+            <img style="width: 100%;" class="img-fluid" alt="Responsive image" src="/images/FTPHB.png" />
+        </a>
+    </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -44,7 +48,7 @@
         </div>
     </div>
 </nav>
-<main role="main" class="container" th:fragment="mainfragment(content)">
+<main id="main" role="main" class="container" th:fragment="mainfragment(content)">
     <div class="jumbotron mt-lg-5">
         <th:block th:replace="${content}"></th:block>
     </div>

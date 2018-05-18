@@ -3,8 +3,6 @@ package net.freshservers.support.commands;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.freshservers.support.domain.Position;
-import net.freshservers.support.domain.SystemType;
 
 import java.util.LinkedList;
 import java.util.List;

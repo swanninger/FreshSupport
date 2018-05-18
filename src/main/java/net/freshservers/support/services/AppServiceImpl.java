@@ -26,7 +26,7 @@ public class AppServiceImpl implements AppService {
             "apk", "ipa"
     };
 
-    private final FilenameFilter IMAGE_FILTER = (dir, name) -> {
+    private final FilenameFilter FILE_FILTER = (dir, name) -> {
         for (final String ext : EXTENSIONS) {
             if (name.endsWith("." + ext)) {
                 return (true);
@@ -42,12 +42,12 @@ public class AppServiceImpl implements AppService {
     private void scanFolder(){
         log.warn("Apps scanned");
         if(ipadDir.isDirectory()){
-            for(File f : Objects.requireNonNull(ipadDir.listFiles(IMAGE_FILTER))){
+            for(File f : Objects.requireNonNull(ipadDir.listFiles(FILE_FILTER))){
                 ipadApps.add(f.getName());
             }
         }
         if(androidDir.isDirectory()){
-            for(File f : Objects.requireNonNull(androidDir.listFiles(IMAGE_FILTER))){
+            for(File f : Objects.requireNonNull(androidDir.listFiles(FILE_FILTER))){
                 androidApps.add(f.getName());
             }
         }

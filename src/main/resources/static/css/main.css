@@ -1,7 +1,17 @@
-li{
+li {
     list-style-type: none;
 }
 
-a:link, a:visited{
+a:link, a:visited {
     text-decoration: none;
+}
+
+body {
+    padding-top: 15px;
+}
+
+@media (max-width: 575px) {
+    body {
+        padding-top: 175px;
+    }
 }
