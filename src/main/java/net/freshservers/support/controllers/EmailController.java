@@ -51,7 +51,7 @@ public class EmailController {
     }
 
     @PostMapping("/email")
-    public String sendEmail(@ModelAttribute("credentialForm") CredentialRequestCommand command){
+    public String sendCredentialRequest(@ModelAttribute("credentialForm") CredentialRequestCommand command){
         UserDetailsImpl user = (UserDetailsImpl)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         command.setReqName(user.getFirstName() + " " + user.getLastName());

@@ -26,6 +26,8 @@ public class Store {
     @Column(name = "DBNAME")
     private String name;
 
+    private String display_name;
+
     @ManyToMany(mappedBy = "stores")
     private Set<User> users;
 }

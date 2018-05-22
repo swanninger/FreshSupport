@@ -29,8 +29,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public Set<String> getStoresNames(User user) {
         Set<String> stores = new TreeSet<>();
-        for(Store s:user.getStores()){
-            stores.add(s.getName());
+        for(Store s : user.getStores()){
+            String displayName = s.getDisplay_name();
+            if (displayName != null && !displayName.isEmpty()){
+                stores.add(displayName);
+            }else{
+                stores.add(s.getName());
+            }
         }
         return stores;
     }
