@@ -44,7 +44,7 @@ public class EmailServiceImpl implements EmailService {
             messageBody.append("Requester Email: blank");
         }
         messageBody.append("Requester Position: ").append(command.getReqPosition()).append("\n");
-        messageBody.append("Requester Concept: ").append(command.getConcept()).append("\n\n");
+        messageBody.append("Requester Concept: ").append(command.getReqConcept()).append("\n\n");
         messageBody.append("Type of Request: ").append(command.getReqType()).append("\n");
         messageBody.append(collectionFormatter("System Types", command.getSystemTypes()));
 
@@ -118,7 +118,7 @@ public class EmailServiceImpl implements EmailService {
         ticket.setRequester(new Requester(command.getReqName(),command.getReqEmail()));
 
         List<TicketField> fields = new ArrayList<>();
-        fields.add(new TicketField(25140303,command.getConcept().toLowerCase()));
+        fields.add(new TicketField(25140303,command.getConcept().toUpperCase()));
         ticket.setCustom_fields(fields);
 
         if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){

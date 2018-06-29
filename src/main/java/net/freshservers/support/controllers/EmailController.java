@@ -59,7 +59,7 @@ public class EmailController {
         if (command.getReqEmail().isEmpty()){
             command.setReqEmail(user.getEmail());
         }
-        command.setConcept(user.getConcept());
+        command.setReqConcept(user.getConcept());
         emailService.sendCredentialsTicket(command);
         return "redirect:/thanks";
     }
