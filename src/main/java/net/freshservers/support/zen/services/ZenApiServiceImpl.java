@@ -32,11 +32,17 @@ public class ZenApiServiceImpl implements ZenApiService {
         String url = zenApiConfiguration.getBaseUrl() + "tickets.json";
 
         Map<String, Object> postMap = new HashMap<>();
-        postMap.put("ticket", ticket);
+
+        try {
+            postMap.put("ticket", ticket);
+        } catch (Error error) {
+            log.error("Error when posting ticket:\n" + ticket);
+        }
+
 
 
 
         JsonNode t = restTemplate.postForObject(url, postMap, JsonNode.class);
-        log.info(t.toString());
+//        log.info(t.toString());
     }
 }
