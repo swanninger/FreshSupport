@@ -128,9 +128,9 @@ public class EmailServiceImpl implements EmailService {
             ticket.setCollaborator_ids(collaborators);
         }
         try {
-            zenApiService.sendTicket(ticket);
+            zenApiService.sendTicket(ticket); //try sending through ZenDesk API
         } catch (Exception e) {
-            sendEmail(command);
+            sendEmail(command); //if fails, send through email
             log.error(e + "\n Failed ticket:\n" + ticket);
         }
     }
