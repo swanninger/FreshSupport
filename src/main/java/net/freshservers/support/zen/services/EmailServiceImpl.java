@@ -1,5 +1,6 @@
 package net.freshservers.support.zen.services;
 
+import lombok.extern.slf4j.Slf4j;
 import net.freshservers.support.commands.CredentialRequestCommand;
 import net.freshservers.support.zen.domain.Comment;
 import net.freshservers.support.zen.domain.Requester;
@@ -17,6 +18,7 @@ import java.util.List;
 
 /* Class responsible for Sending email */
 @Service
+@Slf4j
 public class EmailServiceImpl implements EmailService {
     private final JavaMailSender emailSender;
     private final ZenApiService zenApiService;
@@ -27,7 +29,6 @@ public class EmailServiceImpl implements EmailService {
     }
 
     /**
-     *
      * @param command command object from form
      * @return message body
      */
@@ -38,9 +39,9 @@ public class EmailServiceImpl implements EmailService {
         messageBody.append("Location: ").append(command.getLocation()).append("\n");
         messageBody.append("User Position: ").append(command.getUserPosition()).append("\n\n");
         messageBody.append("Requester: ").append(command.getReqName()).append("\n");
-        if (command.getReqEmail() != null){
+        if (command.getReqEmail() != null) {
             messageBody.append("Requester Email: ").append(command.getReqEmail()).append("\n");
-        }else {
+        } else {
             messageBody.append("Requester Email: blank");
         }
         messageBody.append("Requester Position: ").append(command.getReqPosition()).append("\n");
@@ -48,37 +49,37 @@ public class EmailServiceImpl implements EmailService {
         messageBody.append("Type of Request: ").append(command.getReqType()).append("\n");
         messageBody.append(collectionFormatter("System Types", command.getSystemTypes()));
 
-        if (!command.getForwardEmail().isEmpty()){
+        if (!command.getForwardEmail().isEmpty()) {
             messageBody.append("Forward email to:").append(command.getForwardEmail());
         }
 
         messageBody.append("\n~Permissions~\n");
 
-        if (!command.getEmpMaint().isEmpty()){
+        if (!command.getEmpMaint().isEmpty()) {
             messageBody.append(collectionFormatter("Employee Maintenance", command.getEmpMaint()));
         }
-        if (!command.getHourlyRateAudit().isEmpty()){
+        if (!command.getHourlyRateAudit().isEmpty()) {
             messageBody.append(collectionFormatter("Hourly Rate Audit", command.getHourlyRateAudit()));
         }
-        if (command.isSalaryMgmt()){
+        if (command.isSalaryMgmt()) {
             messageBody.append("Salary Mgmt: Run Salary Mgmt Tool\n");
         }
-        if (command.isPayrollData()){
+        if (command.isPayrollData()) {
             messageBody.append("Payroll Data: All 3\n");
         }
-        if (command.isFoodBevReq()){
+        if (command.isFoodBevReq()) {
             messageBody.append("Food and Bev Request: Access Options\n");
         }
-        if (command.isInvCounts()){
+        if (command.isInvCounts()) {
             messageBody.append("Inventory Counts: View and Update Organization\n");
         }
-        if (command.isFlash()){
+        if (command.isFlash()) {
             messageBody.append("Flash: Can Run Flash\n");
         }
-        if (!command.getSalesReports().isEmpty()){
+        if (!command.getSalesReports().isEmpty()) {
             messageBody.append(collectionFormatter("Sales Reports: ", command.getSalesReports()));
         }
-        if (!command.getNotes().isEmpty()){
+        if (!command.getNotes().isEmpty()) {
             messageBody.append("\nNotes: ").append(command.getNotes());
         }
 
@@ -86,9 +87,9 @@ public class EmailServiceImpl implements EmailService {
     }
 
     // Formats Lists from command data into a single formatted string
-    private String collectionFormatter(String title, List<String> c){
+    private String collectionFormatter(String title, List<String> c) {
         StringBuilder sb = new StringBuilder(title + ":");
-        for(String s : c){
+        for (String s : c) {
             sb.append(" ").append(s).append(",");
         }
         sb.deleteCharAt(sb.length() - 1);
@@ -96,11 +97,11 @@ public class EmailServiceImpl implements EmailService {
         return sb.toString();
     }
 
-    public void sendEmail(CredentialRequestCommand command){
+    public void sendEmail(CredentialRequestCommand command) {
         // email metadata
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo("support@freshtechnology.com");
-        if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){
+        if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")) {
             message.setCc("angela@freshtechnology.com");
         }
         message.setReplyTo(command.getReqEmail());
@@ -115,18 +116,23 @@ public class EmailServiceImpl implements EmailService {
         String messageBody = createMessageBody(command);
 
         Ticket ticket = new Ticket("Credential Request - " + command.getUserName(), new Comment(messageBody), 360000932611L);
-        ticket.setRequester(new Requester(command.getReqName(),command.getReqEmail()));
+        ticket.setRequester(new Requester(command.getReqName(), command.getReqEmail()));
 
         List<TicketField> fields = new ArrayList<>();
-        fields.add(new TicketField(25140303,command.getConcept().toUpperCase()));
+        fields.add(new TicketField(25140303, command.getConcept().toUpperCase()));
         ticket.setCustom_fields(fields);
 
-        if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){
+        if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")) {
             List<Integer> collaborators = new LinkedList<>();
             collaborators.add(1783869483);
             ticket.setCollaborator_ids(collaborators);
         }
-        zenApiService.sendTicket(ticket);
+        try {
+            zenApiService.sendTicket(ticket);
+        } catch (Exception e) {
+            sendEmail(command);
+            log.error(e + "\n Failed ticket:\n" + ticket);
+        }
     }
 
 }

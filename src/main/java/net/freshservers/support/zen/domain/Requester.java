@@ -10,7 +10,7 @@ import java.util.Optional;
 public class Requester {
     private String name;
     private String email;
-    private int locale_id;
+//    private int locale_id;
 
     public Requester(String name, String email) {
         this.name = name;

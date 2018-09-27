@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ZenApiService {
     List<Ticket> getTickets();
-    void sendTicket(Ticket ticket);
+    void sendTicket(Ticket ticket) throws Exception;
 }

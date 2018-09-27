@@ -28,21 +28,15 @@ public class ZenApiServiceImpl implements ZenApiService {
     }
 
     @Override
-    public void sendTicket(Ticket ticket) {
+    public void sendTicket (Ticket ticket) throws Exception{
         String url = zenApiConfiguration.getBaseUrl() + "tickets.json";
 
         Map<String, Object> postMap = new HashMap<>();
-
-        try {
-            postMap.put("ticket", ticket);
-        } catch (Error error) {
-            log.error("Error when posting ticket:\n" + ticket);
-        }
+        postMap.put("ticket", ticket);
 
 
-
-
-        JsonNode t = restTemplate.postForObject(url, postMap, JsonNode.class);
+        restTemplate.postForObject(url, postMap, JsonNode.class);
 //        log.info(t.toString());
+
     }
 }
