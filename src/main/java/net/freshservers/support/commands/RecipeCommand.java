@@ -17,7 +17,7 @@ public class RecipeCommand {
     private String concept;
     private String location;
 
-    private String notes;
+    private String recipeName;
 
     private String invUnits;
     private Integer batchSize;

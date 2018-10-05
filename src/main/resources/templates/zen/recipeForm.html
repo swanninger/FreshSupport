@@ -45,11 +45,16 @@
                 </label>
             </div>
             <h3>Recipe Information</h3>
-            <div class="form-group row" id="recipeHDR">
+            <div class="form-group row">
+                <label class="col-5">Recipe Name:
+                    <input class="form-control" type="text" th:field="*{recipeName}">
+                </label>
+            </div>
+            <div class="form-group row">
                 <label class="col-3">Inventory Unit:
                     <input class="form-control" type="text" th:field="*{invUnits}">
                 </label>
-                <label class="col-3">Batch Size:
+                <label class="col-2">Batch Size:
                     <input class="form-control" type="number" th:field="*{batchSize}">
                 </label>
                 <label class="col-3">Batch Unit:
@@ -61,7 +66,7 @@
                 <label class="col-3">Bin Storage:
                     <input class="form-control" type="text" th:field="*{binStorage}">
                 </label>
-                <label class="col-3">Print Order:
+                <label class="col-2">Print Order:
                     <input class="form-control" type="number" th:field="*{printOrder}">
                 </label>
                 <label class="col-2">Shelf Life(Hrs):
@@ -110,13 +115,13 @@
                 </label>
             </div>
             <div>
-                <h3 class="col-10">Recipe Steps</h3>
-                <table class="table-responsive-sm">
+                <h3>Recipe Steps</h3>
+                <table class="table table-sm table-responsive-sm">
                     <thead>
                     <tr>
-                        <th scope="col" style="width: 8%">Mix Step</th>
-                        <th scope="col" style="width: 8%">Mix Order</th>
-                        <th scope="col" style="width: 10%">Rec Type</th>
+                        <th scope="col" style="width: 9%">Mix Step</th>
+                        <th scope="col" style="width: 9%">Mix Order</th>
+                        <th scope="col" style="width: 12%">Rec Type</th>
                         <th scope="col" style="width: 15%">Ingredient</th>
                         <th scope="col" style="width: 8%">Qty</th>
                         <th scope="col" style="width: 13%">Measure</th>
