@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ZenApiService {
     List<Ticket> getTickets();
-    void sendTicket(Ticket ticket) throws HttpClientErrorException;
+    void sendTicket(Ticket ticket) throws Exception;
 }

@@ -29,6 +29,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/css/**","/webjars/**","/images/*","/","/index").permitAll()
+                .antMatchers("/form/recipe").hasAnyAuthority("GM_USER","OWNER","OPERATOR","ADMIN")
                 .anyRequest().fullyAuthenticated()
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().permitAll();

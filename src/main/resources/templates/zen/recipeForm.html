@@ -15,11 +15,9 @@
                            readonly>
                 </label>
                 <label>Position:
-                    <input type="text" class="form-control-plaintext" size="10" name="userPosition"
+                    <input type="text" class="form-control-plaintext" name="userPosition"
                            th:value="${user.getTypeUser()}" readonly>
                 </label>
-            </div>
-            <div>
                 <label>Reply-to Email:
                     <input type="email" class="form-control form" size="40" name="userEmail"
                            th:value="${user.getEmail()}" required>

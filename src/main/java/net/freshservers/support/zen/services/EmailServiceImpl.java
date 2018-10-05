@@ -101,6 +101,14 @@ public class EmailServiceImpl implements EmailService {
         sendCredentialsTicket(ticketCommand);
     }
 
+    private String prettyBoolean(boolean b) {
+        if(b){
+            return "yes";
+        }else {
+            return "no";
+        }
+    }
+
     @Override
     public void createRecipeTicket(RecipeCommand command) {
         TicketCommand ticketCommand = new TicketCommand();
@@ -121,9 +129,9 @@ public class EmailServiceImpl implements EmailService {
         body.append("Shelf Life(Hrs): ").append(command.getShelfLife()).append("\n");
         body.append("Units In Cater Pack: ").append(command.getUnitsInCaterPack()).append("\n");
 
-        body.append("Tracking: ").append(command.isTracking()).append("\n");
-        body.append("In Count: ").append(command.isInCount()).append("\n");
-        body.append("Print Prep Labels: ").append(command.isPrintPrepLabels()).append("\n");
+        body.append("Tracking: ").append(prettyBoolean(command.isTracking())).append("\n");
+        body.append("In Count: ").append(prettyBoolean(command.isInCount())).append("\n");
+        body.append("Print Prep Labels: ").append(prettyBoolean(command.isPrintPrepLabels())).append("\n");
 
         body.append("\nQID Info:\n");
         body.append("QID Storage: ").append(command.getQIDStorage()).append("\n");
@@ -133,21 +141,22 @@ public class EmailServiceImpl implements EmailService {
 
         body.append("\nRecipe Steps:\n");
         for (RecipeStep step : command.getRecipeSteps()) {
-            body.append(step.getMixStep()).append(" ");
-            body.append(step.getMixOrder()).append(" ");
-            body.append(step.getRecordType()).append(" ");
-            if (step.getIngredient() != null) {
-                body.append(step.getIngredient()).append(" ");
+            body.append("Step: ").append(step.getMixStep()).append(" ");
+            body.append("Order: ").append(step.getMixOrder()).append(" ");
+            body.append("Type: ").append(step.getRecordType()).append(" ");
+            if (!step.getIngredient().isEmpty()) {
+                body.append("Ingredient: ").append(step.getIngredient()).append(" ");
             }
             if (step.getQty() != null) {
-                body.append(step.getQty()).append(" ");
+                body.append("Qty: ").append(step.getQty()).append(" ");
             }
-            if (step.getMeasure() != null) {
-                body.append(step.getMeasure()).append(" ");
+            if (!step.getMeasure().isEmpty()) {
+                body.append("Measure: ").append(step.getMeasure()).append(" ");
             }
-            if (step.getInstructions() != null) {
-                body.append(step.getInstructions()).append(" ");
+            if (!step.getInstructions().isEmpty()) {
+                body.append("Instructions: ").append(step.getInstructions()).append(" ");
             }
+            body.append("\n");
         }
 
         ticketCommand.setBody(body.toString());
@@ -209,7 +218,7 @@ public class EmailServiceImpl implements EmailService {
 
         try {
             zenApiService.sendTicket(ticket); //try sending through ZenDesk API
-        } catch (HttpClientErrorException e) {
+        } catch (Exception e) {
             sendEmail(command); //if fails, send through email
             log.error(e + "\n Failed ticket:\n" + ticket);
         }
