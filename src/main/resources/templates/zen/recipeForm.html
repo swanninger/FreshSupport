@@ -5,7 +5,7 @@
 <nav th:replace="layout :: navfragment"></nav>
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
     <div th:fragment="content">
-        <h2>Recipe Request Form</h2>
+        <h1>Recipe Request Form</h1>
         <form action="#" th:object="${recipeRequest}" th:action="@{/recipeEmail}" method="post">
             <h3>Your Information</h3>
             <div id="userInfo">
@@ -110,58 +110,61 @@
                 </label>
             </div>
             <div>
-                <div class="row">
-                    <h3 class="col-10">Recipe Steps</h3>
-                    <button type="button" class="btn btn-primary col-1" onclick="addRow();">Add Row</button>
-                </div>
-                <table class="table table-sm">
+                <h3 class="col-10">Recipe Steps</h3>
+                <table class="table-responsive-sm">
                     <thead>
                     <tr>
-                        <th scope="col">Mix Step</th>
-                        <th scope="col">Mix Order</th>
-                        <th scope="col">Record Type</th>
-                        <th scope="col">Ingredient</th>
-                        <th scope="col">Qty</th>
-                        <th scope="col">Measure</th>
+                        <th scope="col" style="width: 8%">Mix Step</th>
+                        <th scope="col" style="width: 8%">Mix Order</th>
+                        <th scope="col" style="width: 10%">Rec Type</th>
+                        <th scope="col" style="width: 15%">Ingredient</th>
+                        <th scope="col" style="width: 8%">Qty</th>
+                        <th scope="col" style="width: 13%">Measure</th>
                         <th scope="col">Instructions</th>
-                        <th scope="col">
-                        </th>
                     </tr>
                     </thead>
                     <tbody id="tableBody">
                     <tr>
-                        <th class="col-1">
-                            <input class="form-control" size="5" type="number" th:field="*{recipeSteps[0].mixStep}">
-                        </th>
-                        <td class="col-1">
+                        <td>
+                            <input class="form-control" type="number" th:field="*{recipeSteps[0].mixStep}">
+                        </td>
+                        <td>
                             <input class="form-control" type="number" th:field="*{recipeSteps[0].mixOrder}">
                         </td>
-                        <td class="col-2">
+                        <td>
                             <select class="form-control" th:field="*{recipeSteps[0].recordType}">
                                 <option value="Recipe">Recipe</option>
                                 <option value="Material">Material</option>
                                 <option value="Note">Note</option>
                             </select>
                         </td>
-                        <td class="col-2">
+                        <td>
                             <input class="form-control" type="text" th:field="*{recipeSteps[0].ingredient}">
                         </td>
-                        <td class="col-1">
-                            <input class="form-control" type="number" size="1" th:field="*{recipeSteps[0].qty}">
+                        <td>
+                            <input class="form-control" type="number" th:field="*{recipeSteps[0].qty}">
                         </td>
-                        <td class="col-2">
+                        <td>
                             <input class="form-control" type="text" th:field="*{recipeSteps[0].measure}">
                         </td>
-                        <td class="col-3">
-                            <textarea class="form-control" rows="1" th:field="*{recipeSteps[0].instructions}"></textarea>
+                        <td>
+                            <textarea class="form-control" rows="1"
+                                      th:field="*{recipeSteps[0].instructions}"></textarea>
                         </td>
                     </tr>
                     </tbody>
-
-
                 </table>
+
             </div>
-            <input type="submit" class="btn btn-secondary" value="Submit Request">
+            <div class="mt-5 form-group row justify-content-between">
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary form-control" onclick="addRow();">Add Row</button>
+                </div>
+                <div class="col-2">
+                    <input type="submit" class="btn btn-secondary form-control" value="Submit Request">
+                </div>
+            </div>
+
         </form>
     </div>
 </main>
@@ -173,13 +176,13 @@
         var body = document.getElementById('tableBody');
         index++;
 
-        body.insertRow(-1).innerHTML = '<tr><th class="col-1"><input class="form-control" type="number" name="recipeSteps[' + index + '].mixStep"></th>' +
-            '<td class="col-1"><input class="form-control" type="number" name="recipeSteps[' + index + '].mixOrder"></td>' +
-            '<td class="col-2"><select class="form-control" name="recipeSteps[' + index + '].recordType"><option value="Recipe">Recipe</option><option value="Material">Material</option><option value="Note">Note</option></select></td>' +
-            '<td class="col-2"><input class="form-control" type="text" name="recipeSteps[' + index + '].ingredient"></td>' +
-            '<td class="col-1"><input class="form-control" type="number" name="recipeSteps[' + index + '].qty"></td>' +
-            '<td class="col-2"><input class="form-control" type="text" name="recipeSteps[' + index + '].measure"></td>' +
-            '<td class="col-3"><textarea class="form-control" rows="1" name="recipeSteps[' + index + '].instructions"></textarea></td></tr>';
+        body.insertRow(-1).innerHTML = '<tr><td><input class="form-control" type="number" name="recipeSteps[' + index + '].mixStep"></td>' +
+            '<td><input class="form-control" type="number" name="recipeSteps[' + index + '].mixOrder"></td>' +
+            '<td><select class="form-control" name="recipeSteps[' + index + '].recordType"><option value="Recipe">Recipe</option><option value="Material">Material</option><option value="Note">Note</option></select></td>' +
+            '<td><input class="form-control" type="text" name="recipeSteps[' + index + '].ingredient"></td>' +
+            '<td><input class="form-control" type="number" name="recipeSteps[' + index + '].qty"></td>' +
+            '<td><input class="form-control" type="text" name="recipeSteps[' + index + '].measure"></td>' +
+            '<td><textarea class="form-control" rows="1" name="recipeSteps[' + index + '].instructions"></textarea></td></tr>';
 
     }
 </script>
