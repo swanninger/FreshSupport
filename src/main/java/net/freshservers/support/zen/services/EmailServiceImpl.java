@@ -133,7 +133,21 @@ public class EmailServiceImpl implements EmailService {
 
         body.append("\nRecipe Steps:\n");
         for (RecipeStep step : command.getRecipeSteps()) {
-            body.append(step.toString()).append("\n");
+            body.append(step.getMixStep()).append(" ");
+            body.append(step.getMixOrder()).append(" ");
+            body.append(step.getRecordType()).append(" ");
+            if (step.getIngredient() != null) {
+                body.append(step.getIngredient()).append(" ");
+            }
+            if (step.getQty() != null) {
+                body.append(step.getQty()).append(" ");
+            }
+            if (step.getMeasure() != null) {
+                body.append(step.getMeasure()).append(" ");
+            }
+            if (step.getInstructions() != null) {
+                body.append(step.getInstructions()).append(" ");
+            }
         }
 
         ticketCommand.setBody(body.toString());

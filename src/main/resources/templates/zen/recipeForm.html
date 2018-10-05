@@ -8,24 +8,22 @@
         <h1>Recipe Request Form</h1>
         <form action="#" th:object="${recipeRequest}" th:action="@{/recipeEmail}" method="post">
             <h3>Your Information</h3>
-            <div id="userInfo">
-                <div class="form-group">
-                    <label>Name:
-                        <input type="text" class="form-control-plaintext" name="userName"
-                               th:value="${user.getFname()} + ' ' + ${user.getLname()}"
-                               readonly>
-                    </label>
-                    <label>Position:
-                        <input type="text" class="form-control-plaintext" size="10" name="userPosition"
-                               th:value="${user.getTypeUser()}" readonly>
-                    </label>
-                </div>
-                <div>
-                    <label>Reply-to Email:
-                        <input type="email" class="form-control form" size="40" name="userEmail"
-                               th:value="${user.getEmail()}" required>
-                    </label>
-                </div>
+            <div class="form-group">
+                <label>Name:
+                    <input type="text" class="form-control-plaintext" name="userName"
+                           th:value="${user.getFname()} + ' ' + ${user.getLname()}"
+                           readonly>
+                </label>
+                <label>Position:
+                    <input type="text" class="form-control-plaintext" size="10" name="userPosition"
+                           th:value="${user.getTypeUser()}" readonly>
+                </label>
+            </div>
+            <div>
+                <label>Reply-to Email:
+                    <input type="email" class="form-control form" size="40" name="userEmail"
+                           th:value="${user.getEmail()}" required>
+                </label>
             </div>
             <h3>Location Information</h3>
             <div id="locationInfo" class="form-group">
@@ -47,18 +45,18 @@
             <h3>Recipe Information</h3>
             <div class="form-group row">
                 <label class="col-5">Recipe Name:
-                    <input class="form-control" type="text" th:field="*{recipeName}">
+                    <input class="form-control" type="text" th:field="*{recipeName}" required>
                 </label>
             </div>
             <div class="form-group row">
                 <label class="col-3">Inventory Unit:
-                    <input class="form-control" type="text" th:field="*{invUnits}">
+                    <input class="form-control" type="text" th:field="*{invUnits}" required>
                 </label>
                 <label class="col-2">Batch Size:
-                    <input class="form-control" type="number" th:field="*{batchSize}">
+                    <input class="form-control" type="number" th:field="*{batchSize}" required>
                 </label>
                 <label class="col-3">Batch Unit:
-                    <input class="form-control" type="text" th:field="*{batchUnit}">
+                    <input class="form-control" type="text" th:field="*{batchUnit}" required>
                 </label>
                 <label class="col-3">Department:
                     <input class="form-control" type="text" th:field="*{department}">
@@ -131,10 +129,10 @@
                     <tbody id="tableBody">
                     <tr>
                         <td>
-                            <input class="form-control" type="number" th:field="*{recipeSteps[0].mixStep}">
+                            <input id="mixStep0" class="form-control" type="number" th:value="1" name="recipeSteps[0].mixStep">
                         </td>
                         <td>
-                            <input class="form-control" type="number" th:field="*{recipeSteps[0].mixOrder}">
+                            <input id="mixOrder0" class="form-control" type="number" th:value="1" name="recipeSteps[0].mixOrder">
                         </td>
                         <td>
                             <select class="form-control" th:field="*{recipeSteps[0].recordType}">
@@ -179,10 +177,15 @@
 
     function addRow() {
         var body = document.getElementById('tableBody');
+        var nextStep = document.getElementById('mixStep' + index).value;
+
+        var nextOrder = document.getElementById('mixOrder' + index).value;
+        nextOrder++;
+
         index++;
 
-        body.insertRow(-1).innerHTML = '<tr><td><input class="form-control" type="number" name="recipeSteps[' + index + '].mixStep"></td>' +
-            '<td><input class="form-control" type="number" name="recipeSteps[' + index + '].mixOrder"></td>' +
+        body.insertRow(-1).innerHTML = '<tr><td><input id="mixStep' + index + '" class="form-control" type="number" name="recipeSteps[' + index + '].mixStep" value="' + nextStep + '"></td>' +
+            '<td><input id="mixOrder' + index + '" class="form-control" type="number" name="recipeSteps[' + index + '].mixOrder" value="' + nextOrder + '"></td>' +
             '<td><select class="form-control" name="recipeSteps[' + index + '].recordType"><option value="Recipe">Recipe</option><option value="Material">Material</option><option value="Note">Note</option></select></td>' +
             '<td><input class="form-control" type="text" name="recipeSteps[' + index + '].ingredient"></td>' +
             '<td><input class="form-control" type="number" name="recipeSteps[' + index + '].qty"></td>' +
