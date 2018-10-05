@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.freshservers.support.zen.configuration.ZenApiConfiguration;
 import net.freshservers.support.zen.domain.Ticket;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class ZenApiServiceImpl implements ZenApiService {
     }
 
     @Override
-    public void sendTicket (Ticket ticket) throws Exception{
+    public void sendTicket (Ticket ticket) throws HttpClientErrorException {
         String url = zenApiConfiguration.getBaseUrl() + "tickets.json";
 
         Map<String, Object> postMap = new HashMap<>();

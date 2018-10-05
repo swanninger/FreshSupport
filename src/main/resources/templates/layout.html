@@ -33,8 +33,11 @@
                 <a class="nav-link" href="/resources/recipelinks">Recipes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/credentialform">Credential Request</a>
+                <a class="nav-link" href="/form/credential">Credential Request</a>
             </li>
+            <!--<li class="nav-item">-->
+                <!--<a class="nav-link" href="/form/recipe">Recipe Request</a>-->
+            <!--</li>-->
         </ul>
         <div class="mt-2 mt-md-0">
             <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">

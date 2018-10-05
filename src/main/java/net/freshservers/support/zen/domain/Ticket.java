@@ -21,7 +21,7 @@ public class Ticket {
     private String recipient;
     private long group_id;
     private List<Integer> collaborator_ids;
-    private List<Collaborators> collaborators;
+    private List<String> collaborators;
     private Date created_at;
     private Date updated_at;
     private Requester requester;

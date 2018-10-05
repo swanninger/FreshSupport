@@ -26,6 +26,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.getByUserName(userName);
     }
 
+    /**
+     * Returns a set of all locations the current user has access to
+     * @param user
+     * @return
+     */
     @Override
     public Set<String> getStoresNames(User user) {
         Set<String> stores = new TreeSet<>();
@@ -39,7 +44,11 @@ public class UserServiceImpl implements UserService {
         }
         return stores;
     }
-
+    /**
+     * Returns a set of all concepts the current user has access to
+     * @param user
+     * @return
+     */
     @Override
     public Set<String> getAllConceptCodes(User user){
         Set<String> concepts = new TreeSet<>();
