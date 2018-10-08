@@ -35,7 +35,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/form/credential">Credential Request</a>
             </li>
-            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN')">
+            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN','GM_USER')">
                 <a class="nav-link" href="/form/recipe">Recipe Request</a>
             </li>
         </ul>
