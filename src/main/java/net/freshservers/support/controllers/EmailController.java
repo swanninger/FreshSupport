@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,7 @@ public class EmailController {
     }
 
 
-    @RequestMapping("/form/credential")
+    @GetMapping({"/credentialform","/form/credential"})
     public String getRequestForm(Model model, Authentication authentication){
         UserDetailsImpl userDetail = (UserDetailsImpl)authentication.getPrincipal();
         User user = userDetail.getUser();
@@ -55,7 +56,7 @@ public class EmailController {
         return "redirect:/thanks";
     }
 
-    @RequestMapping("/form/recipe")
+    @RequestMapping({"/recipeform","/form/recipe"})
     public String getRecipeForm(RecipeCommand command, Model model, Authentication authentication){
         UserDetailsImpl userDetail = (UserDetailsImpl)authentication.getPrincipal();
         User user = userDetail.getUser();
