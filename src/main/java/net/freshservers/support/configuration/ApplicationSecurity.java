@@ -6,13 +6,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
-@SuppressWarnings("deprecation")
+
 @Configuration
+@EnableWebSecurity
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     private final UserDetailsServiceImpl userDetailsService;
 
@@ -22,14 +24,21 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
+        auth
+                .authenticationProvider(authenticationProvider())
+                .inMemoryAuthentication()
+                    .withUser("tacomac")
+                    .password(encoder().encode("tmac!"))
+                    .authorities("MAC");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/css/**","/webjars/**","/images/*","/","/index").permitAll()
-                .antMatchers("/form/recipe").hasAnyAuthority("GM_USER","OWNER","OPERATOR","ADMIN")
+                .antMatchers("/css/**", "/webjars/**", "/images/*", "/", "/index").permitAll()
+                .antMatchers("/form/credential", "/resources").hasAnyAuthority("GM_USER", "OWNER", "OPERATOR", "ADMIN", "USER")
+                .antMatchers("/form/recipe").hasAnyAuthority("GM_USER", "OWNER", "OPERATOR", "ADMIN")
+                .antMatchers("/mac").hasAuthority("MAC")
                 .anyRequest().fullyAuthenticated()
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().permitAll();
@@ -42,6 +51,8 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
         authProvider.setPasswordEncoder(encoder());
         return authProvider;
     }
+
+
 
     @Bean
     public PasswordEncoder encoder() {

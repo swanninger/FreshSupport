@@ -2,6 +2,7 @@ package net.freshservers.support.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -9,9 +10,17 @@ import java.util.TreeSet;
 
 @Entity
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(exclude = {"stores"})
 @Table(name = "USERS")
 public class User {
+
+    public User(String username, String password, String concept, String typeUser) {
+        setUserName(username);
+        setPassword(password);
+        setConcept(concept);
+        setTypeUser(typeUser);
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

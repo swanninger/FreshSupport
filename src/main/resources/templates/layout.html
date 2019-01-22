@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <META NAME="robots" CONTENT="noindex,nofollow">
+    <meta name="author" content="Scott Wanninger">
     <title>Fresh Technology</title>
     <link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/css/main.css">
@@ -23,20 +24,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN','GM_USER','USER')">
                 <a class="nav-link" href="/resources/apps">Apps</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN')">
                 <a class="nav-link" href="/resources/wallpaper">Wallpaper</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN','GM_USER','USER')">
                 <a class="nav-link" href="/resources/recipelinks">Recipes</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN','GM_USER','USER')">
                 <a class="nav-link" href="/form/credential">Credential Request</a>
             </li>
-            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN','GM_USER')">
+            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN')">
                 <a class="nav-link" href="/form/recipe">Recipe Request</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasAuthority('MAC')">
+                <a class="nav-link" href="/mac/refund">EDC Refund Request</a>
             </li>
         </ul>
         <div class="mt-2 mt-md-0">
