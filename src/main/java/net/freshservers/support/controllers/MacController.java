@@ -24,14 +24,20 @@ public class MacController {
     }
 
     @PostMapping("/mac/refundEmail")
-    public String sendRefundRequest(@ModelAttribute("refundRequest") RefundCommand refundCommand) {
-
-        return null;
+    public String sendRefundRequest(@ModelAttribute("refundRequest") RefundCommand command) {
+        emailService.createRefundTicket(command);
+        return "redirect:/thanks";
     }
 
     @GetMapping("/mac/reset")
     public String getPassReset(Model model) {
         model.addAttribute("passResetRequest", new PassResetCommand());
         return "mac/passReset";
+    }
+
+    @PostMapping("/mac/resetEmail")
+    public String sendPassResetRequest(@ModelAttribute("passResetRequest") PassResetCommand command) {
+        emailService.createPassResetTicket(command);
+        return "redirect:/thanks";
     }
 }

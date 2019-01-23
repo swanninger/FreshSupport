@@ -5,11 +5,11 @@
 <nav th:replace="layout :: navfragment"></nav>
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
     <div th:fragment="content">
-        <h1>EDC Refund Request Form</h1>
-        <form action="#" th:object="${passResetRequest}" th:action="@{/mac/passReset}" method="post">
+        <h1>Password Reset Request Form</h1>
+        <form action="#" th:object="${passResetRequest}" th:action="@{/mac/resetEmail}" method="post">
             <h3>Application Information</h3>
             <div class="form-group">
-                <label>Application:
+                <label>Application/Program:
                     <input type="text" class="form-control form" th:field="*{application}" required>
                 </label>
                 <label>Store Name:

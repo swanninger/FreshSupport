@@ -17,7 +17,7 @@ public class RefundCommand {
     private String guestName;
     private String guestPhone;
 
-    private LocalDate date;
+    private String date;
 
     private String cardType;
     private Integer lastFour;

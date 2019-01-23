@@ -61,7 +61,7 @@
                     <input type="text" class="form-control form" th:field="*{refundAmount}" required>
                 </label>
                 <label>Reason for Refund:
-                    <input type="text" class="form-control form" th:field="*{explanation}" required>
+                    <textarea class="form-control form" maxlength="140" th:field="*{explanation}" required></textarea>
                 </label>
             </div>
 

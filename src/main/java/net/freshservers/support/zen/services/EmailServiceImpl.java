@@ -1,9 +1,7 @@
 package net.freshservers.support.zen.services;
 
 import lombok.extern.slf4j.Slf4j;
-import net.freshservers.support.commands.CredentialRequestCommand;
-import net.freshservers.support.commands.RecipeCommand;
-import net.freshservers.support.commands.TicketCommand;
+import net.freshservers.support.commands.*;
 import net.freshservers.support.recipe.domain.RecipeStep;
 import net.freshservers.support.zen.domain.Comment;
 import net.freshservers.support.zen.domain.Requester;
@@ -12,10 +10,8 @@ import net.freshservers.support.zen.domain.TicketField;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /* Class responsible for Sending email */
@@ -98,7 +94,7 @@ public class EmailServiceImpl implements EmailService {
         }
         ticketCommand.setGroup(360000932611L);
 
-        sendCredentialsTicket(ticketCommand);
+        sendZenTicket(ticketCommand);
     }
 
     private String prettyBoolean(boolean b) {
@@ -166,8 +162,59 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setSubject("Recipe Request");
         ticketCommand.setGroup(360002668331L);
 
-        sendCredentialsTicket(ticketCommand);
+        sendZenTicket(ticketCommand);
     }
+
+    @Override
+    public void createRefundTicket(RefundCommand command) {
+        TicketCommand ticketCommand = new TicketCommand();
+
+        StringBuilder body = new StringBuilder();
+        body.append("Location: ").append(command.getStoreName()).append("\n");
+        body.append("Guest Name: ").append(command.getGuestName()).append("\n");
+        body.append("Guest Phone: ").append(command.getGuestPhone()).append("\n");
+        body.append("Date of Transaction: ").append(command.getDate()).append("\n");
+        body.append("Card Type: ").append(command.getCardType()).append("\n");
+        body.append("Last 4 Digits: ").append(command.getLastFour()).append("\n");
+        body.append("Check Number: ").append(command.getCheckNumber()).append("\n");
+        body.append("Employee Name: ").append(command.getEmployeeName()).append("\n");
+        body.append("Employee Id: ").append(command.getEmployeeId()).append("\n");
+        body.append("Check Amount: ").append(command.getCheckAmount()).append("\n");
+        body.append("Original Tip: ").append(command.getOriginalTip()).append("\n");
+        body.append("Refund Amount: ").append(command.getRefundAmount()).append("\n");
+        body.append("Reason for Refund: ").append(command.getExplanation()).append("\n");
+
+        ticketCommand.setBody(body.toString());
+        ticketCommand.setRequesterName(command.getStoreName());
+        ticketCommand.setRequesterEmail(command.getReplyToEmail());
+        ticketCommand.setConcept("MAC");
+        ticketCommand.setSubject("MAC - EDC Refund Request");
+        ticketCommand.setGroup(23199149L);
+
+        sendZenTicket(ticketCommand);
+    }
+
+    @Override
+    public void createPassResetTicket(PassResetCommand command) {
+        TicketCommand ticketCommand = new TicketCommand();
+
+        StringBuilder body = new StringBuilder();
+        body.append("Location: ").append(command.getStoreName()).append("\n");
+        body.append("Employee Name: ").append(command.getEmployeeName()).append("\n");
+        body.append("Username: ").append(command.getUsername()).append("\n");
+        body.append("Application: ").append(command.getApplication()).append("\n");
+        body.append("Submitted By: ").append(command.getSubmittedBy()).append("\n");
+
+        ticketCommand.setBody(body.toString());
+        ticketCommand.setRequesterName(command.getStoreName());
+        ticketCommand.setRequesterEmail(command.getReplyToEmail());
+        ticketCommand.setConcept("MAC");
+        ticketCommand.setSubject("MAC - Password Reset Request");
+        ticketCommand.setGroup(23199149L);
+
+        sendZenTicket(ticketCommand);
+    }
+
 
     // Formats Lists from command data into a single formatted string
     private String collectionFormatter(String title, List<String> c) {
@@ -180,7 +227,7 @@ public class EmailServiceImpl implements EmailService {
         return sb.toString();
     }
 
-    public void sendEmail(TicketCommand command) {
+    private void sendEmail(TicketCommand command) {
         // email metadata
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo("support@freshtechnology.com");
@@ -204,8 +251,7 @@ public class EmailServiceImpl implements EmailService {
      *
      * @param command
      */
-    @Override
-    public void sendCredentialsTicket(TicketCommand command) {
+    private void sendZenTicket(TicketCommand command) {
 
         Ticket ticket = new Ticket(command.getSubject(), new Comment(command.getBody()), command.getGroup());
         ticket.setRequester(new Requester(command.getRequesterName(), command.getRequesterEmail()));

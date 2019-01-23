@@ -28,7 +28,8 @@ public class Ticket {
     private List<TicketField> custom_fields;
 
     public Ticket(String subject, Comment comment){
-
+        this.subject = subject;
+        this.comment = comment;
     }
 
     public Ticket(String subject, Comment comment, Long group_id) {
