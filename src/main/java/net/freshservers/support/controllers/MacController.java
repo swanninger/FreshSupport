@@ -1,5 +1,7 @@
 package net.freshservers.support.controllers;
 
+import net.freshservers.support.commands.BeerApproveCommand;
+import net.freshservers.support.commands.BeerRemoveCommand;
 import net.freshservers.support.commands.PassResetCommand;
 import net.freshservers.support.commands.RefundCommand;
 import net.freshservers.support.zen.services.EmailService;
@@ -38,6 +40,30 @@ public class MacController {
     @PostMapping("/mac/resetEmail")
     public String sendPassResetRequest(@ModelAttribute("passResetRequest") PassResetCommand command) {
         emailService.createPassResetTicket(command);
+        return "redirect:/thanks";
+    }
+
+    @GetMapping("/mac/beer/approve")
+    public String getBeerApprove(Model model) {
+        model.addAttribute("beerApprove", new BeerApproveCommand());
+        return "mac/beerApproval";
+    }
+
+    @PostMapping("/mac/beer/approveEmail")
+    public String sendBeerApprove(@ModelAttribute("passResetRequest") BeerApproveCommand command) {
+        emailService.createBeerApprovalTicket(command);
+        return "redirect:/thanks";
+    }
+
+    @GetMapping("/mac/beer/remove")
+    public String getBeerRemove(Model model) {
+        model.addAttribute("beerRemove", new BeerRemoveCommand());
+        return "mac/beerRemoval";
+    }
+
+    @PostMapping("/mac/beer/removeEmail")
+    public String sendBeerRemove(@ModelAttribute("passResetRequest") BeerRemoveCommand command) {
+        emailService.createBeerRemovalTicket(command);
         return "redirect:/thanks";
     }
 }

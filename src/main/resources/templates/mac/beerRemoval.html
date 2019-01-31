@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: headfragment"></head>
+<body>
+<nav th:replace="layout :: navfragment"></nav>
+<main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
+    <div th:fragment="content">
+        <h1>Password Reset Request Form</h1>
+        <form action="#" th:object="${beerRemove}" th:action="@{/mac/beer/removeEmail}" method="post">
+            <h3>Store Information</h3>
+            <div class="form-group">
+                <label>Store Name:
+                    <input type="text" class="form-control form" th:field="*{storeName}" required>
+                </label>
+                <label>Reply-to Email:
+                    <input type="email" class="form-control form" size="30" th:field="*{replyToEmail}" required>
+                </label>
+            </div>
+            <h3>Beer Information</h3>
+            <div class="form-group">
+                <label>Beer Name:
+                    <input type="text" class="form-control form" th:field="*{beerName}" required>
+                </label>
+                <label>Vendor:
+                    <input type="text" class="form-control form" th:field="*{vendor}" required>
+                </label>
+                <label>Vendor:
+                    <input type="text" class="form-control form" th:field="*{vendor}" required>
+                </label>
+                <label>Price:
+                    <input type="number" step="0.01" class="form-control form" th:field="*{price}" required>
+                </label>
+            </div>
+
+
+            <div class="mt-5 form-group row justify-content-between">
+                <div class="col-2">
+                    <input type="submit" class="btn btn-secondary form-control" value="Submit Request">
+                </div>
+            </div>
+
+        </form>
+    </div>
+</main>
+</body>
+</html>

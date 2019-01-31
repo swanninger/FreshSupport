@@ -8,7 +8,11 @@ public interface EmailService {
 
     void createRecipeTicket(RecipeCommand command);
 
-    void createRefundTicket(RefundCommand refundCommand);
+    void createRefundTicket(RefundCommand command);
 
-    void createPassResetTicket(PassResetCommand passResetCommand);
+    void createPassResetTicket(PassResetCommand command);
+
+    void createBeerApprovalTicket(BeerApproveCommand command);
+
+    void createBeerRemovalTicket(BeerRemoveCommand command);
 }

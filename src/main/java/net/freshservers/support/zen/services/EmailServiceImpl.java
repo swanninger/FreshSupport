@@ -215,6 +215,49 @@ public class EmailServiceImpl implements EmailService {
         sendZenTicket(ticketCommand);
     }
 
+    @Override
+    public void createBeerApprovalTicket(BeerApproveCommand command) {
+        TicketCommand ticketCommand = new TicketCommand();
+
+        StringBuilder body = new StringBuilder();
+        body.append("Location: ").append(command.getStoreName()).append("\n");
+        body.append("Beer Name: ").append(command.getBeerName()).append("\n");
+        body.append("Por Size: ").append(command.getPourSize()).append("\n");
+        body.append("Cost: ").append(command.getCost()).append("\n");
+        body.append("Distributor: ").append(command.getDistributor()).append("\n");
+        body.append("Price: ").append(command.getPrice()).append("\n");
+
+        ticketCommand.setBody(body.toString());
+        ticketCommand.setRequesterName(command.getStoreName());
+        ticketCommand.setRequesterEmail(command.getReplyToEmail());
+        ticketCommand.setConcept("MAC");
+        ticketCommand.setSubject("MAC - Beer Approval Request");
+        ticketCommand.setGroup(23199149L);
+
+        sendZenTicket(ticketCommand);
+    }
+
+    @Override
+    public void createBeerRemovalTicket(BeerRemoveCommand command) {
+        TicketCommand ticketCommand = new TicketCommand();
+
+        StringBuilder body = new StringBuilder();
+        body.append("Location: ").append(command.getStoreName()).append("\n");
+        body.append("Beer Name: ").append(command.getBeerName()).append("\n");
+        body.append("Vendor: ").append(command.getVendor()).append("\n");
+        body.append("Unit Size: ").append(command.getUnitSize()).append("\n");
+        body.append("Price: ").append(command.getPrice()).append("\n");
+
+        ticketCommand.setBody(body.toString());
+        ticketCommand.setRequesterName(command.getStoreName());
+        ticketCommand.setRequesterEmail(command.getReplyToEmail());
+        ticketCommand.setConcept("MAC");
+        ticketCommand.setSubject("MAC - Beer Removal Request");
+        ticketCommand.setGroup(23199149L);
+
+        sendZenTicket(ticketCommand);
+    }
+
 
     // Formats Lists from command data into a single formatted string
     private String collectionFormatter(String title, List<String> c) {
