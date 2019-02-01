@@ -28,7 +28,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .authenticationProvider(authenticationProvider())
                 .inMemoryAuthentication()
                     .withUser("tacomac")
-                    .password(encoder().encode("tmac!"))
+                    .password(encoder().encode("tacomac!"))
                     .authorities("MAC");
     }
 

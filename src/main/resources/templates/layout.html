@@ -40,10 +40,16 @@
                 <a class="nav-link" href="/form/recipe">Recipe Request</a>
             </li>
             <li class="nav-item" sec:authorize="hasAuthority('MAC')">
-                <a class="nav-link" href="/mac/refund">EDC Refund Request</a>
+                <a class="nav-link" href="/mac/refund">EDC Refund</a>
             </li>
             <li class="nav-item" sec:authorize="hasAuthority('MAC')">
-                <a class="nav-link" href="/mac/reset">Password Reset Request</a>
+                <a class="nav-link" href="/mac/reset">Password Reset</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasAuthority('MAC')">
+                <a class="nav-link" href="/mac/beer/approve">Beer Approval</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasAuthority('MAC')">
+                <a class="nav-link" href="/mac/beer/remove">Beer Removal</a>
             </li>
         </ul>
         <div class="mt-2 mt-md-0">

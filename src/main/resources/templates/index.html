@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
 <head th:replace="layout :: headfragment"></head>
 <body>
 <nav th:replace="layout :: navfragment"></nav>
-<main role="main" class="container" th:replace="layout :: mainfragment(~{::h1})">
+<main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
+    <div th:fragment="content">
         <h1 th:inline="text">Welcome!</h1>
+        <div class="d-flex align-content-start flex-wrap" sec:authorize="hasAuthority('MAC')">
+            <a class="m-1 btn-info px-5 py-4 rounded" href="/mac/refund">EDC Refund</a>
+            <a class="m-1 btn-info px-5 py-4 rounded" href="/mac/reset">Password Reset</a>
+            <a class="m-1 btn-info px-5 py-4 rounded" href="/mac/beer/approve">Beer Approval</a>
+            <a class="m-1 btn-info px-5 py-4 rounded" href="/mac/beer/remove">Beer Removal</a>
+        </div>
+
+
+    </div>
 </main>
 <div th:replace="layout :: scripts"></div>
 </body>

@@ -5,12 +5,16 @@
 <nav th:replace="layout :: navfragment"></nav>
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
     <div th:fragment="content">
-        <h1>Password Reset Request Form</h1>
+        <h1>Beer Removal Request Form</h1>
         <form action="#" th:object="${beerRemove}" th:action="@{/mac/beer/removeEmail}" method="post">
             <h3>Store Information</h3>
             <div class="form-group">
-                <label>Store Name:
-                    <input type="text" class="form-control form" th:field="*{storeName}" required>
+                <label th:for="${#ids.next('storeName')}">Store Name:
+                    <select class="form-control form" th:field="*{storeName}">
+                        <option th:each="store : ${locations}"
+                                th:value="${store}"
+                                th:text="${store}"></option>
+                    </select>
                 </label>
                 <label>Reply-to Email:
                     <input type="email" class="form-control form" size="30" th:field="*{replyToEmail}" required>

@@ -12,8 +12,12 @@
                 <label>Application/Program:
                     <input type="text" class="form-control form" th:field="*{application}" required>
                 </label>
-                <label>Store Name:
-                    <input type="text" class="form-control form" th:field="*{storeName}" required>
+                <label th:for="${#ids.next('storeName')}">Store Name:
+                    <select class="form-control form" th:field="*{storeName}">
+                        <option th:each="store : ${locations}"
+                                th:value="${store}"
+                                th:text="${store}"></option>
+                    </select>
                 </label>
             </div>
             <h3>User Information</h3>

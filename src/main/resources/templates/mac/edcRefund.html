@@ -9,8 +9,12 @@
         <form action="#" th:object="${refundRequest}" th:action="@{/mac/refundEmail}" method="post">
             <h3>Location Information</h3>
             <div class="form-group">
-                <label>Store Name:
-                    <input type="text" class="form-control form" th:field="*{storeName}" required>
+                <label th:for="${#ids.next('storeName')}">Store Name:
+                    <select class="form-control form" th:field="*{storeName}">
+                        <option th:each="store : ${locations}"
+                                th:value="${store}"
+                                th:text="${store}"></option>
+                    </select>
                 </label>
                 <label>Reply-to Email:
                     <input type="email" class="form-control form" size="30" th:field="*{replyToEmail}" required>

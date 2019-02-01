@@ -17,6 +17,7 @@ public class FreshProperties {
     private Set<String> requestTypes;
     private Set<String> positionTypes;
     private Map<String,String> systemTypes;
+    private Set<String> macLocations;
 
 
 }
