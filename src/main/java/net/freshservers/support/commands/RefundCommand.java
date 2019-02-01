@@ -32,4 +32,6 @@ public class RefundCommand {
     private String refundAmount;
 
     private String explanation;
+
+    private String notes;
 }

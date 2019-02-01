@@ -38,7 +38,10 @@
                     <input type="number" step="0.01" class="form-control form" th:field="*{price}" required>
                 </label>
             </div>
-
+            <div class="form-group" id="notes">
+                <h3>Notes</h3>
+                <textarea class="form-control" maxlength="140" th:field="*{notes}"></textarea>
+            </div>
 
             <div class="mt-5 form-group row justify-content-between">
                 <div class="col-2">

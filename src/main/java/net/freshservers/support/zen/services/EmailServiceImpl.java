@@ -182,7 +182,8 @@ public class EmailServiceImpl implements EmailService {
         body.append("Check Amount: ").append(command.getCheckAmount()).append("\n");
         body.append("Original Tip: ").append(command.getOriginalTip()).append("\n");
         body.append("Refund Amount: ").append(command.getRefundAmount()).append("\n");
-        body.append("Reason for Refund: ").append(command.getExplanation()).append("\n");
+        body.append("Reason for Refund: ").append(command.getExplanation()).append("\n").append("\n");
+        body.append("Notes: ").append(command.getNotes()).append("\n");
 
         ticketCommand.setBody(body.toString());
         ticketCommand.setRequesterName(command.getStoreName());
@@ -203,7 +204,8 @@ public class EmailServiceImpl implements EmailService {
         body.append("Employee Name: ").append(command.getEmployeeName()).append("\n");
         body.append("Username: ").append(command.getUsername()).append("\n");
         body.append("Application: ").append(command.getApplication()).append("\n");
-        body.append("Submitted By: ").append(command.getSubmittedBy()).append("\n");
+        body.append("Submitted By: ").append(command.getSubmittedBy()).append("\n").append("\n");
+        body.append("Notes: ").append(command.getNotes()).append("\n");
 
         ticketCommand.setBody(body.toString());
         ticketCommand.setRequesterName(command.getStoreName());
@@ -225,7 +227,8 @@ public class EmailServiceImpl implements EmailService {
         body.append("Por Size: ").append(command.getPourSize()).append("\n");
         body.append("Cost: ").append(command.getCost()).append("\n");
         body.append("Distributor: ").append(command.getDistributor()).append("\n");
-        body.append("Price: ").append(command.getPrice()).append("\n");
+        body.append("Price: ").append(command.getPrice()).append("\n").append("\n");
+        body.append("Notes: ").append(command.getNotes()).append("\n");
 
         ticketCommand.setBody(body.toString());
         ticketCommand.setRequesterName(command.getStoreName());
@@ -246,7 +249,8 @@ public class EmailServiceImpl implements EmailService {
         body.append("Beer Name: ").append(command.getBeerName()).append("\n");
         body.append("Vendor: ").append(command.getVendor()).append("\n");
         body.append("Unit Size: ").append(command.getUnitSize()).append("\n");
-        body.append("Price: ").append(command.getPrice()).append("\n");
+        body.append("Price: ").append(command.getPrice()).append("\n").append("\n");
+        body.append("Notes: ").append(command.getNotes()).append("\n");
 
         ticketCommand.setBody(body.toString());
         ticketCommand.setRequesterName(command.getStoreName());

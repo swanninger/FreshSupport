@@ -16,4 +16,5 @@ public class BeerApproveCommand {
     private String cost;
     private String distributor;
     private String price;
+    private String notes;
 }

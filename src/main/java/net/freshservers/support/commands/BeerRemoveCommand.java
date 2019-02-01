@@ -15,4 +15,5 @@ public class BeerRemoveCommand {
     private String vendor;
     private String unitSize;
     private String price;
+    private String notes;
 }
