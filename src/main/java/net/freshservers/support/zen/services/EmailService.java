@@ -14,5 +14,5 @@ public interface EmailService {
 
     void createBeerApprovalTicket(BeerApproveCommand command);
 
-    void createBeerRemovalTicket(BeerRemoveCommand command);
+    void createBeerRemoveTicket(BeerRemoveCommand command);
 }

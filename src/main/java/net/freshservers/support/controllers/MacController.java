@@ -70,7 +70,7 @@ public class MacController {
 
     @PostMapping("/mac/beer/removeEmail")
     public String sendBeerRemove(@ModelAttribute("passResetRequest") BeerRemoveCommand command) {
-        emailService.createBeerRemovalTicket(command);
+        emailService.createBeerRemoveTicket(command);
         return "redirect:/thanks";
     }
 }

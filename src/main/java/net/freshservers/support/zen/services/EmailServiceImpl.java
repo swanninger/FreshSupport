@@ -241,7 +241,7 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public void createBeerRemovalTicket(BeerRemoveCommand command) {
+    public void createBeerRemoveTicket(BeerRemoveCommand command) {
         TicketCommand ticketCommand = new TicketCommand();
 
         StringBuilder body = new StringBuilder();
