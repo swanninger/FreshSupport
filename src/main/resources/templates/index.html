@@ -5,14 +5,21 @@
 <body>
 <nav th:replace="layout :: navfragment"></nav>
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
-    <div th:fragment="content">
+    <div th:fragment="content" class="text-center">
         <h1 th:inline="text">Welcome!</h1>
+        <form th:action="@{/login}" method="post" sec:authorize="!isAuthenticated()">
+            <!--<label th:inline="text">[[${#httpServletRequest.remoteUser}]]</label>-->
+            <input class="btn-secondary my-5 px-5 py-4 rounded" role="button" type="submit" value="Sign In"/>
+        </form>
         <div class="d-flex align-content-start flex-wrap" sec:authorize="hasAuthority('MAC')">
-            <a class="m-1 btn-info px-5 py-4 rounded" href="/mac/refund">EDC Refund</a>
+            <!--<a class="m-1 btn-info px-5 py-4 rounded" href="/mac/refund">EDC Refund</a>
             <a class="m-1 btn-info px-5 py-4 rounded" href="/mac/reset">Password Reset</a>
             <a class="m-1 btn-info px-5 py-4 rounded" href="/mac/beer/approve">Beer Approval</a>
-            <a class="m-1 btn-info px-5 py-4 rounded" href="/mac/beer/remove">Beer Remove/Exclude</a>
+            <a class="m-1 btn-info px-5 py-4 rounded" href="/mac/beer/remove">Beer Exclude</a>
+            <a class="m-1 btn-info px-5 py-4 rounded" href="https://bgcpos.zendesk.com/hc/en-us/requests/new">Other</a>-->
+            <img src="/images/MAC.png" class="mx-auto my-4" style="width: 75%;height: 75%;">
         </div>
+
     </div>
 </main>
 <div th:replace="layout :: scripts"></div>

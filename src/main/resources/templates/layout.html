@@ -11,7 +11,7 @@
     <link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/css/main.css">
 </head>
-<body>
+<body class="bg-dark">
 <nav id="nav" th:fragment="navfragment" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="col-sm-2">
         <a class="navbar-brand" href="/">
@@ -49,7 +49,10 @@
                 <a class="nav-link" href="/mac/beer/approve">Beer Approval</a>
             </li>
             <li class="nav-item" sec:authorize="hasAuthority('MAC')">
-                <a class="nav-link" href="/mac/beer/remove">Beer Removal</a>
+                <a class="nav-link" href="/mac/beer/remove">Beer Exclude</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasAuthority('MAC')">
+                <a class="nav-link" href="https://bgcpos.zendesk.com/hc/en-us/requests/new">Other</a>
             </li>
         </ul>
         <div class="mt-2 mt-md-0">
