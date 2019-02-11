@@ -17,8 +17,7 @@ public class PassResetCommand {
 
     private String employeeName;
     private String username;
+    private String userEmail;
 
-
-    private String submittedBy;
     private String notes;
 }

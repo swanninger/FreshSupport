@@ -201,10 +201,10 @@ public class EmailServiceImpl implements EmailService {
 
         StringBuilder body = new StringBuilder();
         body.append("Location: ").append(command.getStoreName()).append("\n");
+        body.append("Application: ").append(command.getApplication()).append("\n");
         body.append("Employee Name: ").append(command.getEmployeeName()).append("\n");
         body.append("Username: ").append(command.getUsername()).append("\n");
-        body.append("Application: ").append(command.getApplication()).append("\n");
-        body.append("Submitted By: ").append(command.getSubmittedBy()).append("\n").append("\n");
+        body.append("User Email: ").append(command.getUserEmail()).append("\n").append("\n");
         body.append("Notes: ").append(command.getNotes()).append("\n");
 
         ticketCommand.setBody(body.toString());

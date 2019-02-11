@@ -9,9 +9,6 @@
         <form action="#" th:object="${passResetRequest}" th:action="@{/mac/resetEmail}" method="post">
             <h3>Application Information</h3>
             <div class="form-group">
-                <label>Application/Program:
-                    <input type="text" class="form-control form" th:field="*{application}" required>
-                </label>
                 <label th:for="${#ids.next('storeName')}">Store Name:
                     <select class="form-control form" th:field="*{storeName}">
                         <option th:each="store : ${locations}"
@@ -19,17 +16,24 @@
                                 th:text="${store}"></option>
                     </select>
                 </label>
+                <label>Reply-to Email:
+                    <input type="email" class="form-control form" size="30" th:field="*{replyToEmail}" required>
+                </label>
+                <br>
+                <label>Application/Program:
+                    <input type="text" class="form-control form" th:field="*{application}" required>
+                </label>
             </div>
             <h3>User Information</h3>
             <div class="form-group">
                 <label>Employee Name:
-                    <input type="text" class="form-control form" th:field="*{employeeName}">
+                    <input type="text" class="form-control form" th:field="*{employeeName}" required>
                 </label>
-                <label>Username:
-                    <input type="tel" class="form-control form" th:field="*{username}">
+                <label>Username/ID:
+                    <input type="tel" class="form-control form" th:field="*{username}" required>
                 </label>
-                <label>Reply-to Email:
-                    <input type="email" class="form-control form" size="30" th:field="*{replyToEmail}" required>
+                <label>User Email (if different):
+                    <input type="email" class="form-control form" size="30" th:field="*{userEmail}">
                 </label>
             </div>
             <div class="form-group" id="notes">
