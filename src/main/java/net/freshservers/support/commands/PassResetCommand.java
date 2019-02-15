@@ -11,7 +11,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class PassResetCommand {
     private String storeName;
-    private String replyToEmail;
+    private String contactName;
+    private String contactEmail;
 
     private String application;
 

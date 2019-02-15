@@ -11,8 +11,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class RefundCommand {
     private String storeName;
-
-    private String replyToEmail;
+    private String contactName;
+    private String contactEmail;
 
     private String guestName;
     private String guestPhone;

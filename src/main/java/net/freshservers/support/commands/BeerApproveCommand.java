@@ -9,7 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class BeerApproveCommand {
     private String storeName;
-    private String replyToEmail;
+    private String contactName;
+    private String contactEmail;
 
     private String beerName;
     private String pourSize;

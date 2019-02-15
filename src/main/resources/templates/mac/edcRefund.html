@@ -16,8 +16,11 @@
                                 th:text="${store}"></option>
                     </select>
                 </label>
-                <label>Reply-to Email:
-                    <input type="email" class="form-control form" size="30" th:field="*{replyToEmail}" required>
+                <label>Contact Name:
+                    <input type="text" class="form-control form" size="30" th:field="*{contactName}" required>
+                </label>
+                <label>Contact Email:
+                    <input type="email" class="form-control form" size="30" th:field="*{contactEmail}" required>
                 </label>
             </div>
             <h3>Guest Information</h3>

@@ -171,6 +171,7 @@ public class EmailServiceImpl implements EmailService {
 
         StringBuilder body = new StringBuilder();
         body.append("Location: ").append(command.getStoreName()).append("\n");
+        body.append("Contact Name: ").append(command.getContactName()).append("\n");
         body.append("Guest Name: ").append(command.getGuestName()).append("\n");
         body.append("Guest Phone: ").append(command.getGuestPhone()).append("\n");
         body.append("Date of Transaction: ").append(command.getDate()).append("\n");
@@ -187,7 +188,7 @@ public class EmailServiceImpl implements EmailService {
 
         ticketCommand.setBody(body.toString());
         ticketCommand.setRequesterName(command.getStoreName());
-        ticketCommand.setRequesterEmail(command.getReplyToEmail());
+        ticketCommand.setRequesterEmail(command.getContactEmail());
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - EDC Refund Request");
         ticketCommand.setGroup(23199149L);
@@ -201,6 +202,7 @@ public class EmailServiceImpl implements EmailService {
 
         StringBuilder body = new StringBuilder();
         body.append("Location: ").append(command.getStoreName()).append("\n");
+        body.append("Contact Name: ").append(command.getContactName()).append("\n");
         body.append("Application: ").append(command.getApplication()).append("\n");
         body.append("Employee Name: ").append(command.getEmployeeName()).append("\n");
         body.append("Username: ").append(command.getUsername()).append("\n");
@@ -209,7 +211,7 @@ public class EmailServiceImpl implements EmailService {
 
         ticketCommand.setBody(body.toString());
         ticketCommand.setRequesterName(command.getStoreName());
-        ticketCommand.setRequesterEmail(command.getReplyToEmail());
+        ticketCommand.setRequesterEmail(command.getContactEmail());
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - Password Reset Request");
         ticketCommand.setGroup(23199149L);
@@ -223,6 +225,7 @@ public class EmailServiceImpl implements EmailService {
 
         StringBuilder body = new StringBuilder();
         body.append("Location: ").append(command.getStoreName()).append("\n");
+        body.append("Contact Name: ").append(command.getContactName()).append("\n");
         body.append("Beer Name: ").append(command.getBeerName()).append("\n");
         body.append("Por Size: ").append(command.getPourSize()).append("\n");
         body.append("Cost: ").append(command.getCost()).append("\n");
@@ -232,7 +235,7 @@ public class EmailServiceImpl implements EmailService {
 
         ticketCommand.setBody(body.toString());
         ticketCommand.setRequesterName(command.getStoreName());
-        ticketCommand.setRequesterEmail(command.getReplyToEmail());
+        ticketCommand.setRequesterEmail(command.getContactEmail());
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - Beer Approval Request");
         ticketCommand.setGroup(23199149L);
@@ -246,6 +249,7 @@ public class EmailServiceImpl implements EmailService {
 
         StringBuilder body = new StringBuilder();
         body.append("Location: ").append(command.getStoreName()).append("\n");
+        body.append("Contact Name: ").append(command.getContactName()).append("\n");
         body.append("Beer Name: ").append(command.getBeerName()).append("\n");
         body.append("Vendor: ").append(command.getVendor()).append("\n");
         body.append("Unit Size: ").append(command.getUnitSize()).append("\n");
@@ -254,7 +258,7 @@ public class EmailServiceImpl implements EmailService {
 
         ticketCommand.setBody(body.toString());
         ticketCommand.setRequesterName(command.getStoreName());
-        ticketCommand.setRequesterEmail(command.getReplyToEmail());
+        ticketCommand.setRequesterEmail(command.getContactEmail());
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - Beer Removal Request");
         ticketCommand.setGroup(23199149L);

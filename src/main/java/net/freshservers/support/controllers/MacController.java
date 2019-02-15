@@ -65,7 +65,7 @@ public class MacController {
     public String getBeerRemove(Model model) {
         model.addAttribute("beerRemove", new BeerRemoveCommand());
         model.addAttribute("locations", freshProperties.getMacLocations());
-        return "mac/beerRemoval";
+        return "mac/beerRemove";
     }
 
     @PostMapping("/mac/beer/removeEmail")
