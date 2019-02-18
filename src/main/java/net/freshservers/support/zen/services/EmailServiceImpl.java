@@ -260,7 +260,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setRequesterName(command.getStoreName());
         ticketCommand.setRequesterEmail(command.getContactEmail());
         ticketCommand.setConcept("MAC");
-        ticketCommand.setSubject("MAC - Beer Removal Request");
+        ticketCommand.setSubject("MAC - Beer Remove Exclude");
         ticketCommand.setGroup(23199149L);
 
         sendZenTicket(ticketCommand);

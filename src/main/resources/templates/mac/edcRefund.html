@@ -59,21 +59,23 @@
                     <input type="text" class="form-control form" th:field="*{checkNumber}" required>
                 </label>
                 <label>Check Amount:
-                    <input type="text" class="form-control form" th:field="*{checkAmount}" required>
+                    <input type="number" step="0.01" class="form-control form" th:field="*{checkAmount}" required>
                 </label>
                 <label>Original Tip:
-                    <input type="text" class="form-control form" th:field="*{originalTip}" required>
+                    <input type="number" step="0.01" class="form-control form" th:field="*{originalTip}" required>
                 </label>
                 <label>Refund Amount:
-                    <input type="text" class="form-control form" th:field="*{refundAmount}" required>
+                    <input type="number" step="0.01" class="form-control form" th:field="*{refundAmount}" required>
                 </label>
-                <label>Reason for Refund:
+                <br>
+                <label class="col-3 px-0">Reason for Refund:
                     <textarea class="form-control form" maxlength="140" th:field="*{explanation}" required></textarea>
                 </label>
             </div>
             <div class="form-group" id="notes">
                 <h3>Notes</h3>
-                <textarea class="form-control" maxlength="140" th:field="*{notes}"></textarea>
+                <textarea class="form-control form" maxlength="140" th:field="*{notes}"></textarea>
+
             </div>
 
             <div class="mt-5 form-group row justify-content-between">
