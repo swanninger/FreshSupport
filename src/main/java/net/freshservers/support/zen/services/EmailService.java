@@ -15,4 +15,6 @@ public interface EmailService {
     void createBeerApprovalTicket(BeerApproveCommand command);
 
     void createBeerRemoveTicket(BeerRemoveCommand command);
+
+    void createMacEventTicket(MacEventCommand command);
 }

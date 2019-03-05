@@ -1,9 +1,6 @@
 package net.freshservers.support.controllers;
 
-import net.freshservers.support.commands.BeerApproveCommand;
-import net.freshservers.support.commands.BeerRemoveCommand;
-import net.freshservers.support.commands.PassResetCommand;
-import net.freshservers.support.commands.RefundCommand;
+import net.freshservers.support.commands.*;
 import net.freshservers.support.configuration.FreshProperties;
 import net.freshservers.support.zen.services.EmailService;
 import org.springframework.stereotype.Controller;
@@ -71,6 +68,19 @@ public class MacController {
     @PostMapping("/mac/beer/removeEmail")
     public String sendBeerRemove(@ModelAttribute("passResetRequest") BeerRemoveCommand command) {
         emailService.createBeerRemoveTicket(command);
+        return "redirect:/thanks";
+    }
+
+    @GetMapping("/mac/event")
+    public String getEvent(Model model) {
+        model.addAttribute("event", new MacEventCommand());
+        model.addAttribute("locations", freshProperties.getMacLocations());
+        return "mac/event";
+    }
+
+    @PostMapping("/mac/eventEmail")
+    public String sendEvent(@ModelAttribute("event") MacEventCommand command) {
+        emailService.createMacEventTicket(command);
         return "redirect:/thanks";
     }
 }

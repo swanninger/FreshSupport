@@ -266,6 +266,29 @@ public class EmailServiceImpl implements EmailService {
         sendZenTicket(ticketCommand);
     }
 
+    @Override
+    public void createMacEventTicket(MacEventCommand command) {
+        TicketCommand ticketCommand = new TicketCommand();
+
+        StringBuilder body = new StringBuilder();
+        body.append("Location: ").append(command.getStoreName()).append("\n");
+        body.append("Contact Name: ").append(command.getContactName()).append("\n");
+        body.append("Event Date: ").append(command.getEventDate()).append("\n");
+        body.append("Event Time: ").append(command.getEventTime()).append("\n");
+        body.append("Event Name: ").append(command.getEventName()).append("\n");
+        body.append("Event Partners: ").append(command.getEventPartners()).append("\n").append("\n");
+        body.append("Notes: ").append(command.getNotes()).append("\n");
+
+        ticketCommand.setBody(body.toString());
+        ticketCommand.setRequesterName(command.getStoreName());
+        ticketCommand.setRequesterEmail(command.getContactEmail());
+        ticketCommand.setConcept("MAC");
+        ticketCommand.setSubject("MAC - Beer Remove Exclude");
+        ticketCommand.setGroup(23199149L);
+
+        sendZenTicket(ticketCommand);
+    }
+
 
     // Formats Lists from command data into a single formatted string
     private String collectionFormatter(String title, List<String> c) {

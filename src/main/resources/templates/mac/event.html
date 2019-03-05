@@ -5,8 +5,8 @@
 <nav th:replace="layout :: navfragment"></nav>
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
     <div th:fragment="content">
-        <h1>Beer Approval Request Form</h1>
-        <form action="#" th:object="${beerApprove}" th:action="@{/mac/beer/approveEmail}" method="post">
+        <h1>Event Request</h1>
+        <form action="#" th:object="${event}" th:action="@{/mac/eventEmail}" method="post">
             <h3>Store Information</h3>
             <div class="form-group">
                 <label th:for="${#ids.next('storeName')}">Store Name:
@@ -23,38 +23,54 @@
                     <input type="email" class="form-control form" size="30" th:field="*{contactEmail}" required>
                 </label>
             </div>
-            <h3>Beer Information</h3>
+            <h3>Event Information</h3>
             <div class="form-group">
-                <label>Beer Name:
-                    <input type="text" class="form-control form" th:field="*{beerName}" required>
+                <label>Event Date:
+                    <input type="date" class="form-control form" th:field="*{eventDate}" required>
                 </label>
-                <!--<label>Pour Size:-->
-                    <!--<input type="text" class="form-control form" th:field="*{pourSize}" required>-->
-                <!--</label>-->
-                <!--<label>Cost:-->
-                    <!--<input type="number" step="0.01" class="form-control form" th:field="*{cost}" required>-->
-                <!--</label>-->
-                <label>Distributor:
-                    <input type="text" class="form-control form" th:field="*{distributor}" required>
+                <label>Event Time:
+                    <input type="time" class="form-control form" th:field="*{eventTime}" required>
                 </label>
-                <label>Price:
-                    <input type="number" step="0.01" class="form-control form" th:field="*{price}" required>
+                <label>Event Name:
+                    <input type="text" class="form-control form" th:field="*{eventName}" required>
                 </label>
+                <label>Event Partners:
+                    <input type="text" class="form-control form" th:field="*{eventPartners}" >
+                </label>
+            </div>
+            <h3>Beers</h3>
+            <div class="form-group" id="beers">
+                <label>Beer 1:<input type="text" id="beer0" class="form-control form" th:field="*{beers[0]}" ></label>
+            </div>
+            <div id="addBeer" class="form-group">
+                <button type="button" class="btn btn-primary form-control col-2" onclick="addRow();">Add Beer</button>
             </div>
             <div class="form-group" id="notes">
                 <h3>Notes</h3>
                 <textarea class="form-control" maxlength="140" th:field="*{notes}"></textarea>
             </div>
-
             <div class="mt-5 form-group row justify-content-between">
                 <div class="col-2">
                     <input type="submit" class="btn btn-secondary form-control" value="Submit Request">
                 </div>
             </div>
-
         </form>
     </div>
 </main>
+<script type='text/javascript'>
+    var index = 0;
+
+    function addRow() {
+        var body = document.getElementById('beers');
+
+        index++;
+
+        var beer = '<br><label>Beer ' + (index - -1) + ':<input type="text" id="beer' + index + '" class="form-control form" name="beers[' + index + ']" value></label>';
+
+        body.insertAdjacentHTML("beforeend", beer);
+
+    }
+</script>
 <div th:replace="layout :: scripts"></div>
 </body>
 </html>
