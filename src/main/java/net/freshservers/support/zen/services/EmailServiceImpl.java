@@ -277,13 +277,17 @@ public class EmailServiceImpl implements EmailService {
         body.append("Event Time: ").append(command.getEventTime()).append("\n");
         body.append("Event Name: ").append(command.getEventName()).append("\n");
         body.append("Event Partners: ").append(command.getEventPartners()).append("\n").append("\n");
-        body.append("Notes: ").append(command.getNotes()).append("\n");
+        body.append("Beers: ").append("\n");
+        for (String beer: command.getBeers()){
+            body.append(beer).append("\n");
+        }
+        body.append("\n").append("Notes: ").append(command.getNotes()).append("\n");
 
         ticketCommand.setBody(body.toString());
         ticketCommand.setRequesterName(command.getStoreName());
         ticketCommand.setRequesterEmail(command.getContactEmail());
         ticketCommand.setConcept("MAC");
-        ticketCommand.setSubject("MAC - Beer Remove Exclude");
+        ticketCommand.setSubject("MAC - Event");
         ticketCommand.setGroup(23199149L);
 
         sendZenTicket(ticketCommand);
