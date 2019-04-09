@@ -191,7 +191,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setRequesterEmail(command.getContactEmail());
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - EDC Refund Request");
-        ticketCommand.setGroup(23199149L);
+        ticketCommand.setGroup(360003466432L);
 
         sendZenTicket(ticketCommand);
     }
@@ -214,7 +214,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setRequesterEmail(command.getContactEmail());
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - Password Reset Request");
-        ticketCommand.setGroup(23199149L);
+        ticketCommand.setGroup(360003466432L);
 
         sendZenTicket(ticketCommand);
     }
@@ -238,7 +238,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setRequesterEmail(command.getContactEmail());
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - Beer Approval Request");
-        ticketCommand.setGroup(23199149L);
+        ticketCommand.setGroup(360004006551L);
 
         sendZenTicket(ticketCommand);
     }
@@ -261,7 +261,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setRequesterEmail(command.getContactEmail());
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - Beer Remove Exclude");
-        ticketCommand.setGroup(23199149L);
+        ticketCommand.setGroup(360004006551L);
 
         sendZenTicket(ticketCommand);
     }
