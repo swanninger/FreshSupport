@@ -68,12 +68,6 @@
                 <label class="col-2">Shelf Life(Hrs):
                     <input class="form-control" type="number" th:field="*{shelfLife}">
                 </label>
-                <label class="col-2">Units In Cater Pack:
-                    <input class="form-control" type="number" th:field="*{unitsInCaterPack}">
-                </label>
-                <label class="col-2">Units In Prep Cont:
-                    <input class="form-control" type="number" th:field="*{unitsInPrepCont}">
-                </label>
             </div>
             <div class="form-group row ml-2">
                 <div class="col-2">
@@ -84,31 +78,6 @@
                     <input id="count" class="form-check-input" type="checkbox" th:field="*{inCount}">
                     <label for="count" class="form-check-label">In Count</label>
                 </div>
-                <div class="col-2">
-                    <input class="form-check-input" type="checkbox" th:field="*{printPrepLabels}">
-                    <label class="form-check-label">Print Prep Labels</label>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-3">QID Storage:
-                    <input class="form-control" type="text" th:field="*{QIDStorage}">
-                </label>
-                <label class="col-3">QID Temp Type:
-                    <select class="form-control" th:field="*{QIDTempType}">
-                        <option value="none">None</option>
-                        <option value="above">Above</option>
-                        <option value="below">Below</option>
-                    </select>
-                </label>
-                <label class="col-2">QID Temp:
-                    <input class="form-control" type="number" th:field="*{QIDTemp}">
-                </label>
-            </div>
-            <div class="form-group row">
-                <label class="col">QID Description:
-                    <textarea class="form-control" rows="4" maxlength="200"
-                              th:field="*{QIDDescription}"></textarea>
-                </label>
             </div>
             <div>
                 <h3>Recipe Steps</h3>

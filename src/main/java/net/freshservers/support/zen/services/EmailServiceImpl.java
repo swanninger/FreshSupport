@@ -343,8 +343,12 @@ public class EmailServiceImpl implements EmailService {
         try {
             zenApiService.sendTicket(ticket); //try sending through ZenDesk API
         } catch (Exception e) {
-            sendEmail(command); //if fails, send through email
-            log.error(e + "\n Failed ticket:\n" + ticket);
+            try {
+                zenApiService.sendTicket(ticket); //try again
+            } catch (Exception e1) {
+                sendEmail(command); //if fails, send through email
+                log.error(e + "\n Failed ticket:\n" + ticket);
+            }
         }
     }
 
