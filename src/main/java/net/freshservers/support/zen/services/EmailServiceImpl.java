@@ -92,6 +92,7 @@ public class EmailServiceImpl implements EmailService {
         if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){
             ticketCommand.getCcs().add("angela@freshtechnology.com");
         }
+        ticketCommand.getCcs().add("adzara@freshtechnology.com");
         ticketCommand.setGroup(360000932611L);
 
         sendZenTicket(ticketCommand);
