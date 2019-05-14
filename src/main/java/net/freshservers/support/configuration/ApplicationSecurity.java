@@ -39,6 +39,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/form/credential", "/resources").hasAnyAuthority("GM_USER", "OWNER", "OPERATOR", "ADMIN", "USER")
                 .antMatchers("/form/recipe").hasAnyAuthority("GM_USER", "OWNER", "OPERATOR", "ADMIN")
                 .antMatchers("/mac").hasAuthority("MAC")
+                .antMatchers("/tech").hasAuthority("OWNER")
                 .anyRequest().fullyAuthenticated()
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().permitAll();
