@@ -36,6 +36,7 @@ public class EmailServiceImpl implements EmailService {
 
         StringBuilder messageBody = new StringBuilder();
         messageBody.append("Name: ").append(command.getUserName()).append("\n");
+        messageBody.append("Email: ").append(command.getUserEmail()).append("\n");
         messageBody.append("Concept: ").append(command.getConcept()).append("\n");
         messageBody.append("Location: ").append(command.getLocation()).append("\n");
         messageBody.append("User Position: ").append(command.getUserPosition()).append("\n\n");
