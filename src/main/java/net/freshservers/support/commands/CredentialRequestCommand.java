@@ -18,6 +18,7 @@ public class CredentialRequestCommand {
     private String concept;
     private String location;
     private String userPosition;
+    private String userEmail;
 
     private String reqName;
     private String reqEmail;
