@@ -8,44 +8,89 @@
         <h1>Beer Approval Request Form</h1>
         <form action="#" th:object="${beerApprove}" th:action="@{/mac/beer/approveEmail}" method="post">
             <h3>Store Information</h3>
-            <div class="form-group">
-                <label th:for="${#ids.next('storeName')}">Store Name:
-                    <select class="form-control form" th:field="*{storeName}">
+            <div class="form-group row">
+                <label class="col" th:for="${#ids.next('storeName')}">Store Name:
+                    <select class="form-control form" name="storeName" required>
+                        <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
                         <option th:each="store : ${locations}"
                                 th:value="${store}"
                                 th:text="${store}"></option>
                     </select>
                 </label>
-                <label>Contact Name:
+                <label class="col">Contact Name:
                     <input type="text" class="form-control form" size="30" th:field="*{contactName}" required>
                 </label>
-                <label>Contact Email:
+                <label class="col">Contact Email:
                     <input type="email" class="form-control form" size="30" th:field="*{contactEmail}" required>
                 </label>
             </div>
             <h3>Beer Information</h3>
             <div class="form-group">
-                <label>Beer Name:
-                    <input type="text" class="form-control form" th:field="*{beerName}" required>
-                </label>
-                <!--<label>Pour Size:-->
-                    <!--<input type="text" class="form-control form" th:field="*{pourSize}" required>-->
-                <!--</label>-->
-                <!--<label>Cost:-->
-                    <!--<input type="number" step="0.01" class="form-control form" th:field="*{cost}" required>-->
-                <!--</label>-->
-                <label>Distributor:
+                <div class="row">
+                    <label class="col">Beer Name:
+                        <input type="text" class="form-control form" th:field="*{beerName}" required>
+                    </label>
+                    <label class="col">Brewery:
+                        <input type="text" class="form-control form" th:field="*{brewery}" required>
+                    </label>
+                    <label class="col" th:for="${#ids.next('purchaseSize')}">Style:
+                        <select class="form-control form" name="style" required>
+                            <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
+                            <option th:each="style : ${styles}"
+                                    th:value="${style}"
+                                    th:text="${style}"></option>
+                        </select>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="col" th:for="${#ids.next('pourSize')}">Pour Size:
+                        <select class="form-control form" name="pourSize" required>
+                            <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
+                            <option th:each="pour : ${pourSizes}"
+                                    th:value="${pour}"
+                                    th:text="${pour}"></option>
+                        </select>
+                    </label>
+                    <label class="col">Sale Price:
+                        <input type="number" step="0.01" class="form-control form" th:field="*{salePrice}" required>
+                    </label>
+                    <label class="col">ABV %:
+                        <input type="number" step="0.01" class="form-control form" th:field="*{ABV}" required>
+                    </label>
+                </div>
+            </div>
+            <h3>Purchase Information</h3>
+            <div class="form-group row">
+                <label class="col">Distributor:
                     <input type="text" class="form-control form" th:field="*{distributor}" required>
                 </label>
-                <label>Price:
-                    <input type="number" step="0.01" class="form-control form" th:field="*{price}" required>
+                <label class="col" th:for="${#ids.next('purchaseSize')}">Purchase Size:
+                    <select class="form-control form" name="purchaseSize" required>
+                        <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
+                        <option th:each="size : ${purchaseSizes}"
+                                th:value="${size}"
+                                th:text="${size}"></option>
+                    </select>
+                </label>
+                <label class="col">Purchase Cost:
+                    <input type="number" step="0.01" class="form-control form" th:field="*{cost}" required>
+                </label>
+            </div>
+            <h3>Other Information</h3>
+            <div class="form-group">
+                <label class="row col-6">Description for Brewniversity:
+                    <textarea id="brewniversity" class="form-control form" maxlength="140"
+                              th:field="*{description}"></textarea>
+                </label>
+                <label class="row col-6">List any beers this will be replacing:
+                    <input type="text" class="form-control" th:field="*{replacing}">
                 </label>
             </div>
             <div class="form-group" id="notes">
-                <h3>Notes</h3>
-                <textarea class="form-control" maxlength="140" th:field="*{notes}"></textarea>
+                <label class="row col-6"><h3>Notes</h3>
+                    <textarea class="form-control" maxlength="140" th:field="*{notes}" required></textarea>
+                </label>
             </div>
-
             <div class="mt-5 form-group row justify-content-between">
                 <div class="col-2">
                     <input type="submit" class="btn btn-secondary form-control" value="Submit Request">

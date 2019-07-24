@@ -15,8 +15,3 @@ body {
         padding-top: 175px;
     }
 }
-
-#notes textarea{
-    max-width: 600px;
-    height: 150px;
-}

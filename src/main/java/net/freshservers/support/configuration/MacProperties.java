@@ -11,10 +11,10 @@ import java.util.Set;
 @Getter
 @Setter
 @Component
-@ConfigurationProperties(prefix = "fresh")
-public class FreshProperties {
-    private Set<String> recipeCodes;
-    private Set<String> requestTypes;
-    private Set<String> positionTypes;
-    private Map<String,String> systemTypes;
+@ConfigurationProperties(prefix = "mac")
+public class MacProperties {
+    private Set<String> macLocations;
+    private Set<String> pourSizes;
+    private Set<String> purchaseSizes;
+    private Set<String> styles;
 }

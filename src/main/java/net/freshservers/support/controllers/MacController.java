@@ -2,6 +2,7 @@ package net.freshservers.support.controllers;
 
 import net.freshservers.support.commands.*;
 import net.freshservers.support.configuration.FreshProperties;
+import net.freshservers.support.configuration.MacProperties;
 import net.freshservers.support.zen.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,17 +13,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MacController {
     private final EmailService emailService;
-    private final FreshProperties freshProperties;
+    private final MacProperties macProperties;
 
-    public MacController(EmailService emailService, FreshProperties freshProperties) {
+    public MacController(EmailService emailService, MacProperties macProperties) {
         this.emailService = emailService;
-        this.freshProperties = freshProperties;
+        this.macProperties = macProperties;
     }
 
     @GetMapping("/mac/refund")
     public String getEdcRefund(Model model) {
         model.addAttribute("refundRequest", new RefundCommand());
-        model.addAttribute("locations", freshProperties.getMacLocations());
+        model.addAttribute("locations", macProperties.getMacLocations());
         return "mac/edcRefund";
     }
 
@@ -35,7 +36,7 @@ public class MacController {
     @GetMapping("/mac/reset")
     public String getPassReset(Model model) {
         model.addAttribute("passResetRequest", new PassResetCommand());
-        model.addAttribute("locations", freshProperties.getMacLocations());
+        model.addAttribute("locations", macProperties.getMacLocations());
         return "mac/passReset";
     }
 
@@ -48,7 +49,10 @@ public class MacController {
     @GetMapping("/mac/beer/approve")
     public String getBeerApprove(Model model) {
         model.addAttribute("beerApprove", new BeerApproveCommand());
-        model.addAttribute("locations", freshProperties.getMacLocations());
+        model.addAttribute("locations", macProperties.getMacLocations());
+        model.addAttribute("pourSizes", macProperties.getPourSizes());
+        model.addAttribute("purchaseSizes", macProperties.getPurchaseSizes());
+        model.addAttribute("styles", macProperties.getStyles());
         return "mac/beerApproval";
     }
 
@@ -61,7 +65,7 @@ public class MacController {
     @GetMapping("/mac/beer/remove")
     public String getBeerRemove(Model model) {
         model.addAttribute("beerRemove", new BeerRemoveCommand());
-        model.addAttribute("locations", freshProperties.getMacLocations());
+        model.addAttribute("locations", macProperties.getMacLocations());
         return "mac/beerRemove";
     }
 
@@ -74,7 +78,7 @@ public class MacController {
     @GetMapping("/mac/event")
     public String getEvent(Model model) {
         model.addAttribute("event", new MacEventCommand());
-        model.addAttribute("locations", freshProperties.getMacLocations());
+        model.addAttribute("locations", macProperties.getMacLocations());
         return "mac/event";
     }
 

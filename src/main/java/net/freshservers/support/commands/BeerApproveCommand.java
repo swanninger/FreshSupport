@@ -13,9 +13,15 @@ public class BeerApproveCommand {
     private String contactEmail;
 
     private String beerName;
-    private String pourSize;
-    private String cost;
+    private String brewery;
+    private String salePrice;
     private String distributor;
-    private String price;
+    private String pourSize;
+    private String purchaseSize;
+    private String cost;
+    private String aBV;
+    private String style;
+    private String replacing;
+    private String description;
     private String notes;
 }

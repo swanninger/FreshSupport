@@ -228,10 +228,16 @@ public class EmailServiceImpl implements EmailService {
         body.append("Location: ").append(command.getStoreName()).append("\n");
         body.append("Contact Name: ").append(command.getContactName()).append("\n");
         body.append("Beer Name: ").append(command.getBeerName()).append("\n");
-        body.append("Por Size: ").append(command.getPourSize()).append("\n");
-        body.append("Cost: ").append(command.getCost()).append("\n");
+        body.append("Brewery: ").append(command.getBrewery()).append("\n");
         body.append("Distributor: ").append(command.getDistributor()).append("\n");
-        body.append("Price: ").append(command.getPrice()).append("\n").append("\n");
+        body.append("Price: ").append(command.getSalePrice()).append("\n").append("\n");
+        body.append("Pour Size: ").append(command.getPourSize()).append("\n");
+        body.append("Purchase Size: ").append(command.getPurchaseSize()).append("\n");
+        body.append("Cost: ").append(command.getCost()).append("\n");
+        body.append("ABV %: ").append(command.getABV()).append("\n");
+        body.append("Style: ").append(command.getStyle()).append("\n");
+        body.append("Replacing?: ").append(command.getReplacing()).append("\n");
+        body.append("Brewniversity Description: ").append(command.getDescription()).append("\n");
         body.append("Notes: ").append(command.getNotes()).append("\n");
 
         ticketCommand.setBody(body.toString());
