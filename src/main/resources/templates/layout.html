@@ -54,7 +54,7 @@
             <!--<li class="nav-item" sec:authorize="hasAuthority('OWNER')">-->
                 <!--<a class="nav-link" href="/tech">Tech</a>-->
             <!--</li>-->
-            <li class="nav-item" sec:authorize="hasAuthority('MAC')">
+            <li class="nav-item" sec:authorize="isAuthenticated()">
                 <a class="nav-link" href="https://bgcpos.zendesk.com/hc/en-us/requests/new">Zendesk</a>
             </li>
         </ul>
