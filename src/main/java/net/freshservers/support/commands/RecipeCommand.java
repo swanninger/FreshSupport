@@ -18,6 +18,7 @@ public class RecipeCommand {
     private String location;
 
     private String recipeName;
+    private String prepSheet;
 
     private String invUnits;
     private Integer batchSize;

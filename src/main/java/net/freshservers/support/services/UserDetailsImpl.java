@@ -1,6 +1,7 @@
 package net.freshservers.support.services;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import net.freshservers.support.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -8,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Slf4j
 public class UserDetailsImpl implements UserDetails {
     @Getter
     private User user;
@@ -21,6 +22,10 @@ public class UserDetailsImpl implements UserDetails {
     public List<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> auth = new ArrayList<>();
         auth.add(new SimpleGrantedAuthority(user.getTypeUser()));
+        if (user.getTechMember() != null && user.getTechMember()) {
+            log.info("hello");
+            auth.add(new SimpleGrantedAuthority("SUPPORT"));
+        }
         return auth;
     }
 

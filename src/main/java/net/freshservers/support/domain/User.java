@@ -3,6 +3,7 @@ package net.freshservers.support.domain;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -42,6 +43,8 @@ public class User {
     private String typeUser;
 
     private Boolean activeflg;
+
+    private Boolean techMember;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

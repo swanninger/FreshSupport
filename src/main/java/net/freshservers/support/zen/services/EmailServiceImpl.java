@@ -118,6 +118,7 @@ public class EmailServiceImpl implements EmailService {
 
         body.append("\nRecipe Info:\n");
         body.append("Recipe Name: ").append(command.getRecipeName()).append("\n");
+        body.append("Prep Sheet: ").append(command.getPrepSheet()).append("\n");
         body.append("Inventory Unit: ").append(command.getInvUnits()).append("\n");
         body.append("Batch Size: ").append(command.getBatchSize()).append("\n");
         body.append("Batch Unit: ").append(command.getBatchUnit()).append("\n");
