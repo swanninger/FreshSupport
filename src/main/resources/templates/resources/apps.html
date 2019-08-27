@@ -47,6 +47,8 @@
                href="https://play.google.com/store/apps/details?id=de.dieterthiess.ipwidget">Ip Widget</a>
             <a class="m-1 btn-info px-3 py-md-4 rounded" role="button"
                href="https://play.google.com/store/apps/details?id=com.freshtechnology.fresttasks">Fresh Tasks</a>
+            <a class="m-1 btn-info px-3 py-md-4 rounded" role="button" href="http://freshservers.net:8080/activate.apk">Table
+                Tracker</a>
             <a th:each="android : ${androidApps}" class="m-1 btn-info px-3 py-md-4 rounded" role="button"
                th:href="'/apps/android/' + ${android}"
                th:text="${android.substring(0,android.length() - 4)}"></a>
