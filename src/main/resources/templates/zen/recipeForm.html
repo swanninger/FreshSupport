@@ -55,7 +55,7 @@
                     <input class="form-control" type="text" th:field="*{invUnits}" required>
                 </label>
                 <label class="col-2">Batch Size:
-                    <input class="form-control" type="number" th:field="*{batchSize}" required>
+                    <input class="form-control" type="number" step=".01" th:field="*{batchSize}" required>
                 </label>
                 <label class="col-3">Batch Unit:
                     <input class="form-control" type="text" th:field="*{batchUnit}" required>
@@ -70,7 +70,7 @@
                     <input class="form-control" type="number" th:field="*{printOrder}">
                 </label>
                 <label class="col-2">Shelf Life(Hrs):
-                    <input class="form-control" type="number" th:field="*{shelfLife}">
+                    <input class="form-control" type="number" step=".01" th:field="*{shelfLife}">
                 </label>
             </div>
             <div class="form-group row ml-2">
