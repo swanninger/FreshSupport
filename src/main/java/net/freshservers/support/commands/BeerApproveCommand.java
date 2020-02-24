@@ -24,4 +24,8 @@ public class BeerApproveCommand {
     private String replacing;
     private String description;
     private String notes;
+    private String calories;
+    private String sugars;
+    private String carbs;
+    private boolean lighterSide;
 }

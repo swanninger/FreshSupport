@@ -11,6 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class TicketCommand {
+    private String sendTo;
     private String body;
     private List<String> ccs = new LinkedList<>();
     private String requesterName;

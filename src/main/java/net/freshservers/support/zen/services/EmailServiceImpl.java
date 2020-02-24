@@ -94,6 +94,7 @@ public class EmailServiceImpl implements EmailService {
             ticketCommand.getCcs().add("angela@freshtechnology.com");
         }
         ticketCommand.setGroup(360000932611L);
+        ticketCommand.setSendTo("hd@freshtechnology.com");
 
         sendZenTicket(ticketCommand);
     }
@@ -163,6 +164,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setConcept(command.getConcept());
         ticketCommand.setSubject("Recipe Request");
         ticketCommand.setGroup(360002668331L);
+        ticketCommand.setSendTo("support@freshtechnology.com");
 
         sendZenTicket(ticketCommand);
     }
@@ -194,6 +196,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - EDC Refund Request");
         ticketCommand.setGroup(360003466432L);
+        ticketCommand.setSendTo("support@freshtechnology.com");
 
         sendZenTicket(ticketCommand);
     }
@@ -217,6 +220,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - Password Reset Request");
         ticketCommand.setGroup(360003466432L);
+        ticketCommand.setSendTo("support@freshtechnology.com");
 
         sendZenTicket(ticketCommand);
     }
@@ -236,6 +240,10 @@ public class EmailServiceImpl implements EmailService {
         body.append("Purchase Size: ").append(command.getPurchaseSize()).append("\n");
         body.append("Cost: ").append(command.getCost()).append("\n");
         body.append("ABV %: ").append(command.getABV()).append("\n");
+        body.append("Lighter Side: ").append(command.isLighterSide()).append("\n");
+        body.append("Calories: ").append(command.getCalories()).append("\n");
+        body.append("Sugars: ").append(command.getSugars()).append("\n");
+        body.append("Carbs: ").append(command.getCarbs()).append("\n");
         body.append("Style: ").append(command.getStyle()).append("\n");
         body.append("Replacing?: ").append(command.getReplacing()).append("\n");
         body.append("Brewniversity Description: ").append(command.getDescription()).append("\n");
@@ -247,6 +255,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - Beer Approval Request");
         ticketCommand.setGroup(360004006551L);
+        ticketCommand.setSendTo("support@freshtechnology.com");
 
         sendZenTicket(ticketCommand);
     }
@@ -270,6 +279,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - Beer Remove Exclude");
         ticketCommand.setGroup(360004006551L);
+        ticketCommand.setSendTo("support@freshtechnology.com");
 
         sendZenTicket(ticketCommand);
     }
@@ -297,6 +307,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setConcept("MAC");
         ticketCommand.setSubject("MAC - Event");
         ticketCommand.setGroup(23199149L);
+        ticketCommand.setSendTo("support@freshtechnology.com");
 
         sendZenTicket(ticketCommand);
     }
@@ -316,7 +327,7 @@ public class EmailServiceImpl implements EmailService {
     private void sendEmail(TicketCommand command) {
         // email metadata
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("support@freshtechnology.com");
+        message.setTo(command.getSendTo());
 
         if (!command.getCcs().isEmpty()) {
             String[] ccs = new String[command.getCcs().size()];
