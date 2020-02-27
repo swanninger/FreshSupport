@@ -96,7 +96,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setGroup(360000932611L);
         ticketCommand.setSendTo("hd@freshtechnology.com");
 
-        sendZenTicket(ticketCommand);
+        sendEmail(ticketCommand);
     }
 
     private String prettyBoolean(boolean b) {
