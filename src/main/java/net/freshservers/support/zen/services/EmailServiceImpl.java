@@ -90,10 +90,10 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setRequesterEmail(command.getReqEmail());
         ticketCommand.setConcept(command.getConcept());
         ticketCommand.setSubject("Credential Request - " + command.getUserName());
-        if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){
-            ticketCommand.getCcs().add("angela@freshtechnology.com");
-        }
-        ticketCommand.setGroup(360000932611L);
+//        if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){
+//            ticketCommand.getCcs().add("angela@freshtechnology.com");
+//        }
+//        ticketCommand.setGroup(360000932611L);
         ticketCommand.setSendTo("hd@freshtechnology.com");
 
         sendEmail(ticketCommand);
