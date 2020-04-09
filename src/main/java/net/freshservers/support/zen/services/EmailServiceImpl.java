@@ -166,7 +166,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setGroup(360002668331L);
         ticketCommand.setSendTo("support@freshtechnology.com");
 
-        sendZenTicket(ticketCommand);
+        sendEmail(ticketCommand);
     }
 
     @Override
@@ -198,7 +198,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setGroup(360003466432L);
         ticketCommand.setSendTo("support@freshtechnology.com");
 
-        sendZenTicket(ticketCommand);
+        sendEmail(ticketCommand);
     }
 
     @Override
@@ -222,7 +222,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setGroup(360003466432L);
         ticketCommand.setSendTo("support@freshtechnology.com");
 
-        sendZenTicket(ticketCommand);
+        sendEmail(ticketCommand);
     }
 
     @Override
@@ -257,7 +257,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setGroup(360004006551L);
         ticketCommand.setSendTo("support@freshtechnology.com");
 
-        sendZenTicket(ticketCommand);
+        sendEmail(ticketCommand);
     }
 
     @Override
@@ -281,7 +281,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setGroup(360004006551L);
         ticketCommand.setSendTo("support@freshtechnology.com");
 
-        sendZenTicket(ticketCommand);
+        sendEmail(ticketCommand);
     }
 
     @Override
@@ -309,7 +309,7 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setGroup(23199149L);
         ticketCommand.setSendTo("support@freshtechnology.com");
 
-        sendZenTicket(ticketCommand);
+        sendEmail(ticketCommand);
     }
 
 
