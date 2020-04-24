@@ -35,7 +35,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/css/**", "/webjars/**", "/images/*", "/", "/index").permitAll()
+                .antMatchers("/css/**", "/webjars/**", "/images/**", "/", "/index").permitAll()
                 .antMatchers("/form/credential", "/resources").hasAnyAuthority("GM_USER", "OWNER", "OPERATOR", "ADMIN", "USER")
                 .antMatchers("/form/recipe").hasAnyAuthority("GM_USER", "OWNER", "OPERATOR", "ADMIN")
                 .antMatchers("/mac").hasAuthority("MAC")
