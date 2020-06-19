@@ -14,7 +14,9 @@ import java.util.Set;
 @ConfigurationProperties(prefix = "mac")
 public class MacProperties {
     private Set<String> macLocations;
+    private Set<String> vendors;
     private Set<String> pourSizes;
     private Set<String> purchaseSizes;
     private Set<String> styles;
+    private Set<String> unitSizes;
 }

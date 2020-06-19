@@ -10,7 +10,8 @@
             <h3>Store Information</h3>
             <div class="form-group">
                 <label th:for="${#ids.next('storeName')}">Store Name:
-                    <select class="form-control form" th:field="*{storeName}">
+                    <select class="form-control form" th:field="*{storeName}" required>
+                        <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
                         <option th:each="store : ${locations}"
                                 th:value="${store}"
                                 th:text="${store}"></option>
@@ -28,11 +29,23 @@
                 <label>Beer Name:
                     <input type="text" class="form-control form" th:field="*{beerName}" required>
                 </label>
-                <label>Vendor:
-                    <input type="text" class="form-control form" th:field="*{vendor}" required>
+                <label th:for="${#ids.next('vendor')}">Distributor:
+                    <!--                    <input type="text" class="form-control form" th:field="*{vendor}" required>-->
+                    <select class="form-control form" th:field="*{vendor}" required>
+                        <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
+                        <option th:each="vendor : ${vendors}"
+                                th:value="${vendor}"
+                                th:text="${vendor}"></option>
+                    </select>
                 </label>
-                <label>Unit Size:
-                    <input type="text" class="form-control form" th:field="*{unitSize}" required>
+                <label th:for="${#ids.next('unitSizes')}">Unit Size:
+                    <!--                    <input type="text" class="form-control form" th:field="*{unitSize}" required>-->
+                    <select class="form-control form" th:field="*{unitSize}" required>
+                        <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
+                        <option th:each="size : ${unitSizes}"
+                                th:value="${size}"
+                                th:text="${size}"></option>
+                    </select>
                 </label>
                 <label>Price:
                     <input type="number" step="0.01" class="form-control form" th:field="*{price}" required>

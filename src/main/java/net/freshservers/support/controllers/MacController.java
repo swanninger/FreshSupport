@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Set;
+
 @Controller
 public class MacController {
     private final EmailService emailService;
@@ -64,8 +66,17 @@ public class MacController {
 
     @GetMapping("/mac/beer/remove")
     public String getBeerRemove(Model model) {
+        Set<String> unitSizes = macProperties.getPurchaseSizes();
+        for (String unitSize : unitSizes) {
+            if (unitSize.startsWith("c")) {
+                unitSizes.remove(unitSize);
+            }
+        }
         model.addAttribute("beerRemove", new BeerRemoveCommand());
         model.addAttribute("locations", macProperties.getMacLocations());
+        model.addAttribute("vendors", macProperties.getVendors());
+        model.addAttribute("unitSizes", unitSizes);
+
         return "mac/beerRemove";
     }
 
