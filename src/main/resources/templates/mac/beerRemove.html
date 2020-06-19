@@ -31,16 +31,15 @@
                 </label>
                 <label th:for="${#ids.next('vendor')}">Distributor:
                     <!--                    <input type="text" class="form-control form" th:field="*{vendor}" required>-->
-                    <select class="form-control form" th:field="*{vendor}" required>
+                    <select class="form-control form" name="*{vendor}" required>
                         <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
                         <option th:each="vendor : ${vendors}"
                                 th:value="${vendor}"
                                 th:text="${vendor}"></option>
                     </select>
                 </label>
-                <label th:for="${#ids.next('unitSizes')}">Unit Size:
-                    <!--                    <input type="text" class="form-control form" th:field="*{unitSize}" required>-->
-                    <select class="form-control form" th:field="*{unitSize}" required>
+                <label th:for="${#ids.next('unitSize')}">Unit Size:
+                    <select class="form-control form" name="*{unitSize}" required>
                         <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
                         <option th:each="size : ${unitSizes}"
                                 th:value="${size}"
