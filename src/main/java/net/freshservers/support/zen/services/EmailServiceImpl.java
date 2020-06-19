@@ -270,6 +270,7 @@ public class EmailServiceImpl implements EmailService {
         body.append("Beer Name: ").append(command.getBeerName()).append("\n");
         body.append("Vendor: ").append(command.getVendor()).append("\n");
         body.append("Unit Size: ").append(command.getUnitSize()).append("\n");
+        body.append("NBO Item #: ").append(command.getNboNumber()).append("\n");
         body.append("Price: ").append(command.getPrice()).append("\n").append("\n");
         body.append("Notes: ").append(command.getNotes()).append("\n");
 
@@ -338,6 +339,7 @@ public class EmailServiceImpl implements EmailService {
         message.setSubject(command.getSubject());
         message.setText(command.getBody());
 
+        log.warn("Email sent from: " + command.getRequesterEmail());
         emailSender.send(message);
     }
 

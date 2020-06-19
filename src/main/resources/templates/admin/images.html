@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: headfragment"></head>
+<body>
+<nav th:replace="layout :: navfragment"></nav>
+<main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
+    <div th:fragment="content"></div>
+</main>
+<div th:replace="layout :: scripts"></div>
+</body>
+</html>
