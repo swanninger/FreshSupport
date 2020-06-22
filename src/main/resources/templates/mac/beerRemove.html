@@ -10,7 +10,7 @@
             <h3>Store Information</h3>
             <div class="form-group">
                 <label th:for="${#ids.next('storeName')}">Store Name:
-                    <select class="form-control form" th:field="*{storeName}" required>
+                    <select class="form-control form" name="storeName" required>
                         <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
                         <option th:each="store : ${locations}"
                                 th:value="${store}"
@@ -31,7 +31,7 @@
                 </label>
                 <label th:for="${#ids.next('vendor')}">Distributor:
                     <!--                    <input type="text" class="form-control form" th:field="*{vendor}" required>-->
-                    <select class="form-control form" name="*{vendor}" required>
+                    <select class="form-control form" name="vendor" required>
                         <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
                         <option th:each="vendor : ${vendors}"
                                 th:value="${vendor}"
@@ -39,7 +39,7 @@
                     </select>
                 </label>
                 <label th:for="${#ids.next('unitSize')}">Unit Size:
-                    <select class="form-control form" name="*{unitSize}" required>
+                    <select class="form-control form" name="unitSize" required>
                         <option value="" th:disabled="disabled" th:selected="selected">----Select----</option>
                         <option th:each="size : ${unitSizes}"
                                 th:value="${size}"
