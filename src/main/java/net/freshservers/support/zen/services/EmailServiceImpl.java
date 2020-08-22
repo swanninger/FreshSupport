@@ -94,7 +94,7 @@ public class EmailServiceImpl implements EmailService {
 //            ticketCommand.getCcs().add("angela@freshtechnology.com");
 //        }
 //        ticketCommand.setGroup(360000932611L);
-        ticketCommand.setSendTo("hd@freshtechnology.com");
+        ticketCommand.setSendTo("support@freshtechnology.com");
 
         sendEmail(ticketCommand);
     }

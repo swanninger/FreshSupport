@@ -81,7 +81,7 @@ public class MacController {
     }
 
     @PostMapping("/mac/beer/removeEmail")
-    public String sendBeerRemove(@ModelAttribute("passResetRequest") BeerRemoveCommand command) {
+    public String sendBeerRemove(@ModelAttribute("beerRemove") BeerRemoveCommand command) {
         emailService.createBeerRemoveTicket(command);
         return "redirect:/thanks";
     }
@@ -96,6 +96,20 @@ public class MacController {
     @PostMapping("/mac/eventEmail")
     public String sendEvent(@ModelAttribute("event") MacEventCommand command) {
         emailService.createMacEventTicket(command);
+        return "redirect:/thanks";
+    }
+
+    @GetMapping("/mac/olo")
+    public String getOloRequest(Model model) {
+        model.addAttribute("oloRequest", new OloRequestCommand());
+        model.addAttribute("locations", macProperties.getMacLocations());
+
+        return "mac/olo";
+    }
+
+    @PostMapping("/mac/oloEmail")
+    public String sendOloRequest(@ModelAttribute("oloRequest") OloRequestCommand command) {
+
         return "redirect:/thanks";
     }
 }
