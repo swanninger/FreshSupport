@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,4 +18,5 @@ public class FreshProperties {
     private Set<String> requestTypes;
     private Set<String> positionTypes;
     private Map<String,String> systemTypes;
+    private List<String> extensionTypes;
 }

@@ -6,4 +6,6 @@ public interface AppService {
     Set<String> getAndroidApps();
 
     Set<String> getIpadApps();
+
+    Set<String> getTechApps();
 }

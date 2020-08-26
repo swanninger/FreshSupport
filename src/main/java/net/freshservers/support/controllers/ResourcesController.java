@@ -38,6 +38,7 @@ public class ResourcesController {
     public String getApps(Model model){
         model.addAttribute("ipadApps", appService.getIpadApps());
         model.addAttribute("androidApps", appService.getAndroidApps());
+        model.addAttribute("techApps", appService.getTechApps());
         return "resources/apps";
     }
 
