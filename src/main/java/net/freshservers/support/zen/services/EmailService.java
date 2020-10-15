@@ -17,4 +17,6 @@ public interface EmailService {
     void createBeerRemoveTicket(BeerRemoveCommand command);
 
     void createMacEventTicket(MacEventCommand command);
+
+    void createCkeTier2Ticket(Tier2Command command);
 }

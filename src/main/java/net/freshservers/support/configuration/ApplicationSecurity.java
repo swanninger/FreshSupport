@@ -24,12 +24,15 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .authenticationProvider(authenticationProvider())
-                .inMemoryAuthentication()
-                    .withUser("tacomac")
-                    .password(encoder().encode("tacomac!"))
-                    .authorities("MAC");
+        auth.authenticationProvider(authenticationProvider());
+        auth.inMemoryAuthentication()
+                .withUser("tacomac")
+                .password(encoder().encode("tacomac!"))
+                .authorities("MAC");
+        auth.inMemoryAuthentication()
+                .withUser("cke")
+                .password(encoder().encode("cke!"))
+                .authorities("CKE");
     }
 
     @Override
@@ -41,10 +44,12 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/mac").hasAuthority("MAC")
                 .antMatchers("/tech").hasAuthority("OWNER")
                 .antMatchers("/resources/tech").hasAuthority("OWNER")
+                .antMatchers(("/cke")).hasAuthority("CKE")
                 .anyRequest().fullyAuthenticated()
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().permitAll();
     }
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider
@@ -55,13 +60,13 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Bean
     public PasswordEncoder encoder() {
         return NoOpPasswordEncoder.getInstance();
     }
+
     @Bean
-    public SpringSecurityDialect springSecurityDialect(){
+    public SpringSecurityDialect springSecurityDialect() {
         return new SpringSecurityDialect();
     }
 }

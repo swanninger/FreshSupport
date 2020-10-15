@@ -23,22 +23,30 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN','GM_USER','USER')">
+        <ul class="navbar-nav mr-auto" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN','GM_USER','USER')">
+            <li class="nav-item">
                 <a class="nav-link" href="/resources/apps">Apps</a>
             </li>
             <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN','GM_USER')">
                 <a class="nav-link" href="/resources/wallpaper">Wallpaper</a>
             </li>
-            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN','GM_USER','USER')">
+            <li class="nav-item">
                 <a class="nav-link" href="/resources/recipelinks">Recipes</a>
             </li>
-            <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN','GM_USER','USER')">
+            <li class="nav-item">
                 <a class="nav-link" href="/form/credential">Credential Request</a>
             </li>
             <li class="nav-item" sec:authorize="hasAnyAuthority('OWNER','OPERATOR','OPERATOR-EDIT','ADMIN')">
                 <a class="nav-link" href="/form/recipe">Recipe Request</a>
             </li>
+            <!--<li class="nav-item" sec:authorize="hasAuthority('OWNER')">-->
+                <!--<a class="nav-link" href="/tech">Tech</a>-->
+            <!--</li>-->
+            <li class="nav-item" sec:authorize="isAuthenticated()">
+                <a class="nav-link" href="https://fthd.freshdesk.com/">Contact Support</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto" th:fragment="macNav">
             <li class="nav-item" sec:authorize="hasAuthority('MAC')">
                 <a class="nav-link" href="/mac/refund">EDC Refund</a>
             </li>
@@ -54,11 +62,10 @@
             <li class="nav-item" sec:authorize="hasAuthority('MAC')">
                 <a class="nav-link" href="https://tmacrestaurants.sharepoint.com/">Share Point</a>
             </li>
-            <!--<li class="nav-item" sec:authorize="hasAuthority('OWNER')">-->
-                <!--<a class="nav-link" href="/tech">Tech</a>-->
-            <!--</li>-->
-            <li class="nav-item" sec:authorize="isAuthenticated()">
-                <a class="nav-link" href="https://fthd.freshdesk.com/">Contact Support</a>
+        </ul>
+        <ul class="navbar-nav mr-auto" th:fragment="ckeNav" sec:authorize="hasAuthority('CKE')">
+            <li class="nav-item">
+                <a class="nav-link" href="/cke/tier2">Escalate Tier 2</a>
             </li>
         </ul>
         <div class="mt-2 mt-md-0">

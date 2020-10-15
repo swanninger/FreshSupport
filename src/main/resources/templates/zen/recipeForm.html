@@ -8,7 +8,7 @@
         <h1>Recipe Request Form</h1>
         <form action="#" th:object="${recipeRequest}" th:action="@{/recipeEmail}" method="post">
             <h3>Your Information</h3>
-            <div class="form-group">
+            <div class="form-group row">
                 <label>Name:
                     <input type="text" class="form-control-plaintext" name="userName"
                            th:value="${user.getFname()} + ' ' + ${user.getLname()}"

@@ -96,6 +96,8 @@ public class EmailServiceImpl implements EmailService {
 //        ticketCommand.setGroup(360000932611L);
         ticketCommand.setSendTo("support@freshtechnology.com");
 
+        log.warn("Creds Request from: " + ticketCommand.getRequesterEmail());
+
         sendEmail(ticketCommand);
     }
 
@@ -313,6 +315,24 @@ public class EmailServiceImpl implements EmailService {
         sendEmail(ticketCommand);
     }
 
+    @Override
+    public void createCkeTier2Ticket(Tier2Command command) {
+        TicketCommand ticketCommand = new TicketCommand();
+
+        StringBuilder body = new StringBuilder();
+        body.append("Unit ID: ").append(command.getUnitId()).append("\n");
+        body.append("Agent: ").append(command.getAgent()).append("\n").append("\n");
+        body.append("Message: ").append(command.getMessageBody()).append("\n");
+
+        ticketCommand.setBody(body.toString());
+//        ticketCommand.setRequesterEmail(command.getContactEmail());
+        ticketCommand.setConcept("CKE");
+        ticketCommand.setSubject("Level 2 ToGo Support");
+        ticketCommand.setSendTo("togosupport@freshtechnology.com ");
+
+        sendEmail(ticketCommand);
+    }
+
 
     // Formats Lists from command data into a single formatted string
     private String collectionFormatter(String title, List<String> c) {
@@ -339,7 +359,7 @@ public class EmailServiceImpl implements EmailService {
         message.setSubject(command.getSubject());
         message.setText(command.getBody());
 
-        log.warn("Email sent from: " + command.getRequesterEmail());
+//        log.warn("Email sent from: " + command.getRequesterEmail());
         emailSender.send(message);
     }
 

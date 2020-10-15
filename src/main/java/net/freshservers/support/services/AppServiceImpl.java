@@ -35,7 +35,6 @@ public class AppServiceImpl implements AppService {
 
     public AppServiceImpl(FreshProperties properties) {
         this.properties = properties;
-        scanFolder();
         EXTENSIONS = properties.getExtensionTypes();
 
         FILE_FILTER = (dir, name) -> {
@@ -46,6 +45,8 @@ public class AppServiceImpl implements AppService {
             }
             return (false);
         };
+
+        scanFolder();
     }
 
     @Scheduled(cron="0 0 * * * *")
