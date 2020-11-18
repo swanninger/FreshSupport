@@ -6,7 +6,7 @@
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
     <div th:fragment="content">
         <h1>Password Reset Request Form</h1>
-        <form action="#" th:object="${passResetRequest}" th:action="@{/mac/resetEmail}" method="post">
+        <form id="theForm" action="#" th:object="${passResetRequest}" th:action="@{/mac/resetEmail}" method="post">
             <h3>Application Information</h3>
             <div class="form-group">
                 <label th:for="${#ids.next('storeName')}">Store Name:
@@ -46,7 +46,7 @@
 
             <div class="mt-5 form-group row justify-content-between">
                 <div class="col-2">
-                    <input type="submit" class="btn btn-secondary form-control" value="Submit Request">
+                    <input id="theSubmit" type="submit" class="btn btn-secondary form-control" value="Submit Request">
                 </div>
             </div>
 

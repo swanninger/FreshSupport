@@ -88,6 +88,11 @@
 <div th:fragment="scripts">
     <script type='text/javascript' src="/webjars/jquery/jquery.min.js"></script>
     <script type='text/javascript' src='/webjars/bootstrap/js/bootstrap.min.js'></script>
+    <script>
+        $("#theForm").submit(function( event ) {
+            $("#theSubmit").prop("disabled", true).addClass("disabled");
+        });
+    </script>
 </div>
 </body>
 </html>

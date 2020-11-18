@@ -5,7 +5,7 @@
 <nav th:replace="layout :: navfragment"></nav>
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
     <div th:fragment="content">
-        <form action="#" th:object="${tier2request}" th:action="@{/cke/tier2/email}" method="post">
+        <form id="theForm" action="#" th:object="${tier2request}" th:action="@{/cke/tier2/email}" method="post">
             <div class="form-group row">
                 <label class="col-3"><b>Unit ID:</b>
                     <input type="number" step="1" class="form-control" th:field="*{unitId}" required>
@@ -21,7 +21,7 @@
             </div>
             <div class="mt-5 form-group row justify-content-between">
                 <div class="col-3">
-                    <input type="submit" class="btn btn-secondary form-control" value="Submit Request">
+                    <input id="theSubmit" type="submit" class="btn btn-secondary form-control" value="Submit Request">
                 </div>
             </div>
         </form>
