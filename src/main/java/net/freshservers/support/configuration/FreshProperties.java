@@ -19,4 +19,5 @@ public class FreshProperties {
     private Set<String> positionTypes;
     private Map<String,String> systemTypes;
     private List<String> extensionTypes;
+    private String freshTasksEmail;
 }

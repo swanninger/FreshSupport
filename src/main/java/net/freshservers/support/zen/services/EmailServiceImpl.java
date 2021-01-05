@@ -2,6 +2,7 @@ package net.freshservers.support.zen.services;
 
 import lombok.extern.slf4j.Slf4j;
 import net.freshservers.support.commands.*;
+import net.freshservers.support.configuration.FreshProperties;
 import net.freshservers.support.recipe.domain.RecipeStep;
 import net.freshservers.support.zen.domain.Comment;
 import net.freshservers.support.zen.domain.Requester;
@@ -20,10 +21,12 @@ import java.util.List;
 public class EmailServiceImpl implements EmailService {
     private final JavaMailSender emailSender;
     private final ZenApiService zenApiService;
+    private final FreshProperties freshProperties;
 
-    public EmailServiceImpl(JavaMailSender emailSender, ZenApiService zenApiService) {
+    public EmailServiceImpl(JavaMailSender emailSender, ZenApiService zenApiService, FreshProperties freshProperties) {
         this.emailSender = emailSender;
         this.zenApiService = zenApiService;
+        this.freshProperties = freshProperties;
     }
 
     /**
@@ -41,7 +44,7 @@ public class EmailServiceImpl implements EmailService {
         messageBody.append("Location: ").append(command.getLocation()).append("\n");
         messageBody.append("User Position: ").append(command.getUserPosition()).append("\n\n");
         messageBody.append("Requester: ").append(command.getReqName()).append("\n");
-        if (command.getReqEmail() != null) {
+        if (!command.getReqEmail().isEmpty()) {
             messageBody.append("Requester Email: ").append(command.getReqEmail()).append("\n");
         } else {
             messageBody.append("Requester Email: blank");
@@ -90,10 +93,16 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setRequesterEmail(command.getReqEmail());
         ticketCommand.setConcept(command.getConcept());
         ticketCommand.setSubject("Credential Request - " + command.getUserName());
+
+        if (command.getSystemTypes().contains("Fresh_Tasks")){
+            ticketCommand.getCcs().add(freshProperties.getFreshTasksEmail());
+        }
+
 //        if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){
 //            ticketCommand.getCcs().add("angela@freshtechnology.com");
 //        }
 //        ticketCommand.setGroup(360000932611L);
+
         ticketCommand.setSendTo("support@freshtechnology.com");
 
         log.warn("Creds Request from: " + ticketCommand.getRequesterEmail());
@@ -359,7 +368,7 @@ public class EmailServiceImpl implements EmailService {
         message.setSubject(command.getSubject());
         message.setText(command.getBody());
 
-//        log.warn("Email sent from: " + command.getRequesterEmail());
+        log.warn("Email sent from: " + command.getRequesterEmail());
         emailSender.send(message);
     }
 

@@ -10,23 +10,23 @@ import static org.junit.Assert.*;
 
 public class UserServiceImplTest {
 
-    UserServiceImpl userService;
-
-    @Mock
-    UserRepository userRepository;
-
-    @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-
-        userService = new UserServiceImpl(userRepository);
-    }
-
-    @Test
-    public void getByUserName() {
-    }
-
-    @Test
-    public void getStores() {
-    }
+//    UserServiceImpl userService;
+//
+//    @Mock
+//    UserRepository userRepository;
+//
+//    @Before
+//    public void setUp() throws Exception {
+//        MockitoAnnotations.initMocks(this);
+//
+//        userService = new UserServiceImpl(userRepository);
+//    }
+//
+//    @Test
+//    public void getByUserName() {
+//    }
+//
+//    @Test
+//    public void getStores() {
+//    }
 }
