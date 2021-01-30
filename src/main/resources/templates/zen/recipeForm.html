@@ -6,7 +6,7 @@
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
     <div th:fragment="content">
         <h1>Recipe Request Form</h1>
-        <form action="#" th:object="${recipeRequest}" th:action="@{/recipeEmail}" method="post">
+        <form id="theForm" action="#" th:object="${recipeRequest}" th:action="@{/recipeEmail}" method="post">
             <h3>Your Information</h3>
             <div class="form-group row">
                 <label>Name:

@@ -6,7 +6,7 @@
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
     <div th:fragment="content">
         <h1>Beer Approval Request Form</h1>
-        <form action="#" th:object="${beerApprove}" th:action="@{/mac/beer/approveEmail}" method="post">
+        <form id="theForm" action="#" th:object="${beerApprove}" th:action="@{/mac/beer/approveEmail}" method="post">
             <h3>Store Information</h3>
             <div class="form-group row">
                 <label class="col" th:for="${#ids.next('storeName')}">Store Name:

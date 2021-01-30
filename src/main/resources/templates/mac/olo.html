@@ -6,7 +6,7 @@
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
     <div th:fragment="content">
         <h2>OLO Request Form</h2>
-        <form action="#" th:object="${oloRequest}" th:action="@{/mac/oloEmail}" method="post">
+        <form id="theForm" action="#" th:object="${oloRequest}" th:action="@{/mac/oloEmail}" method="post">
             <h3>Location Information</h3>
             <div class="form-group">
                 <label th:for="${#ids.next('storeName')}">Store Name:
