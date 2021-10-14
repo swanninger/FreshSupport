@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /* Class responsible for Sending email */
 @Service
@@ -95,7 +96,12 @@ public class EmailServiceImpl implements EmailService {
         ticketCommand.setSubject("Credential Request - " + command.getUserName());
 
         if (command.getSystemTypes().contains("Fresh_Tasks")){
-            ticketCommand.getCcs().add(freshProperties.getFreshTasksEmail());
+            Optional<String> emailOptional = Optional.ofNullable(freshProperties.getFreshTasksEmail());
+            if (emailOptional.isPresent()){
+                if (!emailOptional.get().isEmpty())
+                ticketCommand.getCcs().add(emailOptional.get());
+            }
+
         }
 
 //        if (command.getSystemTypes().contains("Cloud") || command.getSystemTypes().contains("Email")){
