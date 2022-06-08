@@ -30,8 +30,9 @@ public class ResourcesController {
 
     @RequestMapping("/wallpaper")
     public String getWallpapers(Model model){
-        model.addAttribute("ipadWallpapers", wallpaperService.getIpadWallpapers());
-        model.addAttribute("androidWallpapers", wallpaperService.getAndroidWallpapers());
+        model.addAttribute("genericWallpapers", wallpaperService.getGenericWallpapers());
+//        model.addAttribute("ipadWallpapers", wallpaperService.getIpadWallpapers());
+//        model.addAttribute("androidWallpapers", wallpaperService.getAndroidWallpapers());
         return "resources/wallpaper";
     }
     @RequestMapping("/apps")

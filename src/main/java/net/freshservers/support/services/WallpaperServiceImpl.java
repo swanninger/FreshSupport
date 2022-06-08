@@ -16,13 +16,16 @@ import java.util.TreeSet;
 @Slf4j
 @Service
 public class WallpaperServiceImpl implements WallpaperService {
+//    @Getter @Setter
+//    private Set<String> androidWallpapers = new TreeSet<>();
+//    @Getter @Setter
+//    private Set<String> ipadWallpapers = new TreeSet<>();
     @Getter @Setter
-    private Set<String> androidWallpapers = new TreeSet<>();
-    @Getter @Setter
-    private Set<String> ipadWallpapers = new TreeSet<>();
+    private Set<String> genericWallpapers = new TreeSet<>();
 
-    private final File ipadDir = new File("static/images/wallpaper/ipad");
-    private final File androidDir = new File("static/images/wallpaper/android");
+//    private final File ipadDir = new File("static/images/wallpaper/ipad");
+//    private final File androidDir = new File("static/images/wallpaper/android");
+    private final File genericDir = new File("static/images/wallpaper/generic");
 
     private final String[] EXTENSIONS = new String[]{
             "gif", "png", "bmp"
@@ -44,15 +47,20 @@ public class WallpaperServiceImpl implements WallpaperService {
     @Scheduled(cron="0 0 * * * *")
     private void scanFolder(){
         log.info("Resources scanned");
-        if(ipadDir.isDirectory()){
-            for(File f : Objects.requireNonNull(ipadDir.listFiles(IMAGE_FILTER))){
-                ipadWallpapers.add(f.getName());
+        if(genericDir.isDirectory()){
+            for(File f : Objects.requireNonNull(genericDir.listFiles(IMAGE_FILTER))){
+                genericWallpapers.add(f.getName());
             }
         }
-        if(androidDir.isDirectory()){
-            for(File f : Objects.requireNonNull(androidDir.listFiles(IMAGE_FILTER))){
-                androidWallpapers.add(f.getName());
-            }
-        }
+//        if(ipadDir.isDirectory()){
+//            for(File f : Objects.requireNonNull(ipadDir.listFiles(IMAGE_FILTER))){
+//                ipadWallpapers.add(f.getName());
+//            }
+//        }
+//        if(androidDir.isDirectory()){
+//            for(File f : Objects.requireNonNull(androidDir.listFiles(IMAGE_FILTER))){
+//                androidWallpapers.add(f.getName());
+//            }
+//        }
     }
 }

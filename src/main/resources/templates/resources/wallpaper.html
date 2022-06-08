@@ -5,18 +5,23 @@
 <nav th:replace="layout :: navfragment"></nav>
 <main role="main" class="container" th:replace="layout :: mainfragment(~{::content})">
     <div th:fragment="content" >
-        <h3 >Ipad</h3>
         <div class="d-flex align-content-start flex-wrap">
-            <a th:each="ipad : ${ipadWallpapers}" class="m-1 btn-info px-5 py-4 rounded" role="button"
-               th:href="'/images/wallpaper/ipad/' + ${ipad}"
-               th:text="${ipad.substring(0,3)}"></a>
+            <a th:each="generic : ${genericWallpapers}" class="m-1 btn-info px-5 py-4 rounded" role="button"
+               th:href="'/images/wallpaper/generic/' + ${generic}"
+               th:text="${generic.substring(0,3)}"></a>
         </div>
-        <h3>Android</h3>
-        <div class="d-flex align-content-start flex-wrap">
-            <a th:each="android : ${androidWallpapers}" class="m-1 btn-info px-5 py-4 rounded" role="button"
-               th:href="'/images/wallpaper/android/' + ${android}"
-               th:text="${android.substring(0,3)}"></a>
-        </div>
+<!--        <h3 >Ipad</h3>-->
+<!--        <div class="d-flex align-content-start flex-wrap">-->
+<!--            <a th:each="ipad : ${ipadWallpapers}" class="m-1 btn-info px-5 py-4 rounded" role="button"-->
+<!--               th:href="'/images/wallpaper/ipad/' + ${ipad}"-->
+<!--               th:text="${ipad.substring(0,3)}"></a>-->
+<!--        </div>-->
+<!--        <h3>Android</h3>-->
+<!--        <div class="d-flex align-content-start flex-wrap">-->
+<!--            <a th:each="android : ${androidWallpapers}" class="m-1 btn-info px-5 py-4 rounded" role="button"-->
+<!--               th:href="'/images/wallpaper/android/' + ${android}"-->
+<!--               th:text="${android.substring(0,3)}"></a>-->
+<!--        </div>-->
 
     </div>
 </main>
