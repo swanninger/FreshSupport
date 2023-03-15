@@ -26,13 +26,13 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
         auth.inMemoryAuthentication()
-                .withUser("tacomac")
-                .password(encoder().encode("tacomac!"))
-                .authorities("MAC");
+                .withUser("")
+                .password(encoder().encode("!"))
+                .authorities("");
         auth.inMemoryAuthentication()
-                .withUser("cke")
-                .password(encoder().encode("cke!"))
-                .authorities("CKE");
+                .withUser("")
+                .password(encoder().encode("!"))
+                .authorities("");
     }
 
     @Override
