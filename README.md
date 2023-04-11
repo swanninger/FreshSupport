@@ -1,3 +1,3 @@
 # FreshSupport
 
-Support site for customers to access resorces and submit support requests.
+Support site for customers to access resources and submit support requests.
